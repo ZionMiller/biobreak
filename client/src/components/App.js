@@ -6,6 +6,7 @@ import Calendar from "./Calendar"
 import Watchlist from "./Watchlist"
 import Login from "./Login"
 import Signup from "./Signup"
+import LandingPage from "./LandingPage";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("")
@@ -19,16 +20,19 @@ function App() {
     .then(data => {setStocks(data)})
   }, []);
 
-  // useEffect(() => {
-  //   fetch("/me")
-  //     .then((r) => r.json())
-  //     .then((person) => setCurrentUser(person));
-  // }, []);
+  useEffect(() => {
+    fetch("/me")
+      .then((r) => r.json())
+      .then((person) => setCurrentUser(person));
+  }, []);
 
   return (
       <div className="App">
-        <NavBar />
+        <NavBar currentUser={currentUser} updateUser={updateUser}/>
           <Switch>
+            <Route path='/landing-page'>
+              <LandingPage />
+            </Route>
             <Route path='/snapshot'>
               <Snapshot />
             </Route>
@@ -39,10 +43,10 @@ function App() {
               <Watchlist />
             </Route>
             <Route path='/login'>
-              <Login />
+              <Login updateUser={updateUser}/>
             </Route>
             <Route path='/signup'>
-              <Signup />
+              <Signup updateUser={updateUser}/>
             </Route>
           </Switch>
       </div>

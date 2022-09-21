@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
     include ActionController::Cookies
-    # before_action :authenticate_user
+    before_action :authenticate_user
 
     # for testing cookies, will delete later
     def hello_world
@@ -21,17 +21,17 @@ class ApplicationController < ActionController::API
         render json: { errors: {error.model => "Not found"} }, status: :not_found
     end
 
-    # def current_user
-    #     @current_user ||= User.find_by_id(session[:user_id])
-    # end
+    def current_user
+        @current_user ||= User.find_by_id(session[:user_id])
+    end
 
-    # def authenticate_user
-    #     render json: { errors: {User: "You don't have access"} }, status: :unauthorized unless current_user
-    # end
+    def authenticate_user
+        render json: { errors: {User: "You don't have access"} }, status: :unauthorized unless current_user
+    end
 
-    # def authorized
-    #     permitted = current_user.admin?
-    #     render json: { error: {User: "doesn't have permission"} }, status: :forbidden unless permitted
-    # end
+    def authorized
+        permitted = current_user.admin?
+        render json: { error: {User: "doesn't have permission"} }, status: :forbidden unless permitted
+    end
 
 end
