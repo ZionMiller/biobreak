@@ -6,7 +6,7 @@ import Calendar from "./Calendar"
 import Watchlist from "./Watchlist"
 import Login from "./Login"
 import Signup from "./Signup"
-import LandingPage from "./LandingPage";
+import About from "./About";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("")
@@ -30,8 +30,8 @@ function App() {
       <div className="App">
         <NavBar currentUser={currentUser} updateUser={updateUser}/>
           <Switch>
-            <Route path='/landing-page'>
-              <LandingPage />
+            <Route path='/about'>
+              <About />
             </Route>
             <Route path='/snapshot'>
               <Snapshot />

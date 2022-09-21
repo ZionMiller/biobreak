@@ -1,10 +1,12 @@
 import React from 'react'
-import { Menu } from 'semantic-ui-react';
+import NightDay from './NightDay'
+import { Menu, Checkbox } from 'semantic-ui-react';
 import { Link, useHistory } from 'react-router-dom'
 
 const NavBar = ({currentUser, updateUser}) => {
 
     const history = useHistory()
+
     const handleLogOut = () => {
         fetch('/logout', {
             method: "DELETE"
@@ -13,12 +15,16 @@ const NavBar = ({currentUser, updateUser}) => {
         history.push('login') // redirect user to home page after logging out
     }
 
+    // const handleMode = () => {
+
+    // }
+
   return (
     <div id="navBar">
         { currentUser ?
         <Menu className='menu'>
             <Menu.Item>
-                <Link to='/landing-page'>Landing Page</Link>
+                <Link to='/About'>About</Link>
             </Menu.Item>
             <Menu.Item>
                 <Link to='/snapshot'>Snapshot</Link>
@@ -28,6 +34,13 @@ const NavBar = ({currentUser, updateUser}) => {
             </Menu.Item>
             <Menu.Item>
                 <Link to='/watchlist'>Watchlist</Link>
+            </Menu.Item>
+            <Menu.Item >
+            <i class="sun icon"></i>
+                <div class="ui fitted toggle checkbox">
+                    <Checkbox toggle />
+                </div>
+            <i class="moon icon"></i>
             </Menu.Item>
             <Menu.Item>
                 <Link onClick={handleLogOut}>Logout</Link>
