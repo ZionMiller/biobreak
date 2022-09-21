@@ -1,0 +1,2 @@
+class WatchlistStocksController < ApplicationController
+end
