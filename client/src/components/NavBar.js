@@ -1,5 +1,4 @@
 import React from 'react'
-import NightDay from './NightDay'
 import { Menu, Checkbox } from 'semantic-ui-react';
 import { Link, useHistory } from 'react-router-dom'
 
@@ -15,16 +14,21 @@ const NavBar = ({currentUser, updateUser}) => {
         history.push('login') // redirect user to home page after logging out
     }
 
-    // const handleMode = () => {
+    const changeTheme = (dark_mode) => {
+        if (dark_mode) {
 
-    // }
+        } else {
+
+        }
+
+    }
 
   return (
     <div id="navBar">
         { currentUser ?
         <Menu className='menu'>
             <Menu.Item>
-                <Link to='/About'>About</Link>
+                <img className="logo" id="logo" src={require("../biobreak_logo.png")} alt="logo"/>
             </Menu.Item>
             <Menu.Item>
                 <Link to='/snapshot'>Snapshot</Link>
@@ -35,10 +39,13 @@ const NavBar = ({currentUser, updateUser}) => {
             <Menu.Item>
                 <Link to='/watchlist'>Watchlist</Link>
             </Menu.Item>
+            <Menu.Item>
+                <Link to='/resources'>Resources</Link>
+            </Menu.Item>
             <Menu.Item >
             <i class="sun icon"></i>
                 <div class="ui fitted toggle checkbox">
-                    <Checkbox toggle />
+                    <Checkbox toggle onClick={changeTheme}/>
                 </div>
             <i class="moon icon"></i>
             </Menu.Item>
@@ -49,7 +56,7 @@ const NavBar = ({currentUser, updateUser}) => {
         :
         <Menu className='menu'>
             <Menu.Item>
-                <Link to="/">Landing Page</Link>
+                <Link to='/About'>About</Link>
             </Menu.Item>
             <Menu.Item>
                 <Link to="/login">Log In</Link>
