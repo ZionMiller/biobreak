@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    skip_before_action :authenticate_user, only: :create
+    skip_before_action :authenticate, only: :create
 
     def show
         user = User.find_by_id(session[:user_id])
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:first_name, :last_name, :email, :zipcode, :password)
+        params.permit(:first_name, :username, :last_name, :email, :zipcode, :password)
     end
 
 end

@@ -1,12 +1,6 @@
 class ApplicationController < ActionController::API
     include ActionController::Cookies
-    before_action :authenticate_user
-
-    # for testing cookies, will delete later
-    def hello_world
-        session[:count] = (session[:count] || 0) + 1
-        render json: { count: session[:count] }
-    end
+    before_action :authenticate
 
     rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_response
     rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
@@ -25,7 +19,7 @@ class ApplicationController < ActionController::API
         @current_user ||= User.find_by_id(session[:user_id])
     end
 
-    def authenticate_user
+    def authenticate
         render json: { errors: {User: "You don't have access"} }, status: :unauthorized unless current_user
     end
 

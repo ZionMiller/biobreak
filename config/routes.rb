@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   
-  get '/hello', to: 'application#hello_world'
   get '/stocks', to: "stocks#get_stocks"
   
   get '*path',

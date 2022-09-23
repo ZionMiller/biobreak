@@ -1,6 +1,6 @@
 class StocksController < ApplicationController
 
-    skip_before_action :authenticate_user, only: :get_stocks
+    skip_before_action :authenticate, only: :get_stocks
 
 
     # def get_stocks

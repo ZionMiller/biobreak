@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu, Checkbox } from 'semantic-ui-react';
+import { Menu, Checkbox, Icon } from 'semantic-ui-react';
 import { Link, useHistory } from 'react-router-dom'
 
 const NavBar = ({currentUser, updateUser}) => {
@@ -26,9 +26,9 @@ const NavBar = ({currentUser, updateUser}) => {
   return (
     <div id="navBar">
         { currentUser ?
-        <Menu className='menu'>
+        <Menu className='menu' >
             <Menu.Item>
-                <img className="logo" id="logo" src={require("../biobreak_logo.png")} alt="logo"/>
+                <img className="logo-img" style={{ fontSize: "100px" }} id="logo" src={require("../biobreak_logo.png")} alt="logo"/>
             </Menu.Item>
             <Menu.Item>
                 <Link to='/snapshot'>Snapshot</Link>
@@ -50,7 +50,7 @@ const NavBar = ({currentUser, updateUser}) => {
             <i class="moon icon"></i>
             </Menu.Item>
             <Menu.Item>
-                <Link onClick={handleLogOut}>Logout</Link>
+                <Link onClick={handleLogOut}><Icon name="user circle" size="big"/></Link>
             </Menu.Item>
         </Menu>
         :
