@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom'
 
 const NavBar = ({currentUser, updateUser}) => {
 
+
     const changeTheme = (dark_mode) => {
         if (dark_mode) {
 
@@ -20,6 +21,10 @@ const NavBar = ({currentUser, updateUser}) => {
         <Menu className='menu' >
             <Menu.Item>
                 <img className="logo-img" style={{ fontSize: "100px" }} id="logo" src={require("../biobreak_logo.png")} alt="logo"/>
+            </Menu.Item>
+            <Menu.Item>
+                <h1>insert market tape here</h1>
+                {/* <TickerTape widgetPropsAny={{"theme": "dark"}} /> */}
             </Menu.Item>
             <Menu.Item>
                 <Link to='/snapshot'>Snapshot</Link>

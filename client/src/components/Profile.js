@@ -1,13 +1,14 @@
 import React from 'react'
 import { Button, Segment, Grid, Image, Divider, Card } from 'semantic-ui-react'
 
+
 const Profile = ({handleLogOut, currentUser}) => {
   return (
     <Segment>
     <Grid columns={2} relaxed='very'>
       <Grid.Column>
         <p>
-          Embed economic events from Trading view here 
+            Put embedded market attribute here
         </p>
       </Grid.Column>
       <Grid.Column>

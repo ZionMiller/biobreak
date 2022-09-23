@@ -18,11 +18,11 @@ function App() {
   const history = useHistory()
 
   
-  useEffect(() => {
-    fetch('/hello')
-    .then(res => res.json())
-    .then(data => {setStocks(data)})
-  }, []);
+  // useEffect(() => {
+  //   fetch('/hello')
+  //   .then(res => res.json())
+  //   .then(data => {setStocks(data)})
+  // }, []);
   
   useEffect(() => {
     fetch("/me")
