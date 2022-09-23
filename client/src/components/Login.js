@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { Button, Divider, Form, Grid, Label, Segment } from 'semantic-ui-react'
-
-import {useHistory} from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom'
 
 
 const Login = ({updateUser}) => {
@@ -82,18 +81,13 @@ const Login = ({updateUser}) => {
               value ={formData.password}  
               onChange={handleChange}
             />
-
-            <Button 
-            content='Login' 
-            primary onSubmit={handleSubmit}
-            href='/signup'
-            />
-
           </Form>
         </Grid.Column>
 
           <Grid.Column verticalAlign='middle'>
-        <Button content='Sign up' icon='signup' size='big' />
+        {/* <Button content='Sign up' icon='signup' size='big' /> */}
+        <Link to="/signup">Sign up</Link>
+
       </Grid.Column>
     </Grid>
 
