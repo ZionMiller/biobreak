@@ -4,16 +4,6 @@ import { Link, useHistory } from 'react-router-dom'
 
 const NavBar = ({currentUser, updateUser}) => {
 
-    const history = useHistory()
-
-    const handleLogOut = () => {
-        fetch('/logout', {
-            method: "DELETE"
-        })
-        updateUser("")
-        history.push('login') // redirect user to home page after logging out
-    }
-
     const changeTheme = (dark_mode) => {
         if (dark_mode) {
 
@@ -22,6 +12,7 @@ const NavBar = ({currentUser, updateUser}) => {
         }
 
     }
+
 
   return (
     <div id="navBar">
@@ -50,7 +41,7 @@ const NavBar = ({currentUser, updateUser}) => {
             <i class="moon icon"></i>
             </Menu.Item>
             <Menu.Item>
-                <Link onClick={handleLogOut}><Icon name="user circle" size="big"/></Link>
+                <Link to='/profile'><Icon name="user circle" size="big"/></Link>
             </Menu.Item>
         </Menu>
         :
