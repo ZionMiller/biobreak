@@ -54,10 +54,10 @@ const NavBar = ({currentUser, updateUser}) => {
             <Menu.Item>
                 <Link to='/About'>About</Link>
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item position='right'>
                 <Link to="/login">Log In</Link>
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item >
                 <Link to="/signup">Sign up</Link>
             </Menu.Item>
         </Menu>
