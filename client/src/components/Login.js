@@ -58,8 +58,9 @@ const Login = ({updateUser}) => {
   
     <Segment placeholder>
       <Grid columns={2} relaxed='very' stackable>
-        <Grid.Column>
-          <Form onSubmit={handleSubmit}>
+        <Grid.Column onSubmit={handleSubmit}>
+        {errors? <div align-items='center'>{errors}</div>:null}
+          <Form>
           {/* <label style={{textAlign: 'center'}}>First Name</label> */}
             <Form.Input
               icon='user'
@@ -68,7 +69,8 @@ const Login = ({updateUser}) => {
               type="text" 
               id="username" 
               name="username" 
-              value ={formData.username}  onChange={handleChange}
+              value ={formData.username}  
+              onChange={handleChange}
             />
       
             <Form.Input
@@ -81,12 +83,14 @@ const Login = ({updateUser}) => {
               value ={formData.password}  
               onChange={handleChange}
             />
+            <Button onSubmit={handleSubmit}>Login</Button>
           </Form>
         </Grid.Column>
 
-          <Grid.Column verticalAlign='middle'>
-        {/* <Button content='Sign up' icon='signup' size='big' /> */}
         <Link to="/signup">Sign up</Link>
+
+        {/* <Button content='Sign up' icon='signup' size='medium' /> */}
+        <Grid.Column verticalAlign='middle'>
 
       </Grid.Column>
     </Grid>

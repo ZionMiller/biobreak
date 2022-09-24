@@ -8,6 +8,7 @@ import Login from "./Login"
 import Signup from "./Signup"
 import About from "./About";
 import Profile from "./Profile";
+import Resources from "./Resources";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("")
@@ -53,6 +54,9 @@ function App() {
             </Route>
             <Route path='/watchlist'>
               <Watchlist />
+            </Route>
+            <Route path='/resources'>
+              <Resources />
             </Route>
             <Route path='/profile'>
               <Profile handleLogOut={handleLogOut} currentUser={currentUser}/>

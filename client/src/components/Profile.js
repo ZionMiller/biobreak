@@ -1,4 +1,5 @@
 import React from 'react'
+import { MarketOverview } from "react-tradingview-embed";
 import { Button, Segment, Grid, Image, Divider, Card } from 'semantic-ui-react'
 
 
@@ -7,9 +8,7 @@ const Profile = ({handleLogOut, currentUser}) => {
     <Segment>
     <Grid columns={2} relaxed='very'>
       <Grid.Column>
-        <p>
-            Put embedded market attribute here
-        </p>
+        <MarketOverview widgetProps={{"theme": "dark"}} />
       </Grid.Column>
       <Grid.Column>
       <Card.Group>

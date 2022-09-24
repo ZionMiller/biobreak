@@ -1,6 +1,7 @@
 import React from 'react'
 import { Menu, Checkbox, Icon } from 'semantic-ui-react';
 import { Link, useHistory } from 'react-router-dom'
+import { TickerTape } from "react-tradingview-embed";
 
 const NavBar = ({currentUser, updateUser}) => {
 
@@ -14,7 +15,6 @@ const NavBar = ({currentUser, updateUser}) => {
 
     }
 
-
   return (
     <div id="navBar">
         { currentUser ?
@@ -23,8 +23,7 @@ const NavBar = ({currentUser, updateUser}) => {
                 <img className="logo-img" style={{ fontSize: "100px" }} id="logo" src={require("../biobreak_logo.png")} alt="logo"/>
             </Menu.Item>
             <Menu.Item>
-                <h1>insert market tape here</h1>
-                {/* <TickerTape widgetPropsAny={{"theme": "dark"}} /> */}
+                <h1>In put XBI, IBB here</h1>
             </Menu.Item>
             <Menu.Item>
                 <Link to='/snapshot'>Snapshot</Link>
@@ -62,6 +61,7 @@ const NavBar = ({currentUser, updateUser}) => {
             </Menu.Item>
         </Menu>
         }
+        <TickerTape widgetProps={{"theme": "dark"}}/> 
     </div>
   )
 }

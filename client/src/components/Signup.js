@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { Button, Form } from 'semantic-ui-react'
 import {useHistory} from 'react-router-dom'
 
 
@@ -86,3 +87,53 @@ const Signup = ({updateUser}) => {
 }
 
 export default Signup
+        // <Form onSubmit={handleSubmit}>
+        //     <Form.Input 
+        //       type="text" 
+        //       id="first_name" 
+        //       placeholder='first name'
+        //       name="first_name" 
+        //       value={formData.first_name}  
+        //       onChange={handleChange}
+        //     />
+        //     <Form.Input 
+        //       type="text" 
+        //       id="last_name" 
+        //       placeholder='last name'
+        //       name="last_name" 
+        //       value={formData.last_name}  
+        //       onChange={handleChange}
+        //     />
+        //     <Form.Input 
+        //       type="text" 
+        //       id="email" 
+        //       placeholder='email'
+        //       name="email" 
+        //       value={formData.email}  
+        //       onChange={handleChange}
+        //     />
+        //     <Form.Input 
+        //       type="text" 
+        //       id="zipcode" 
+        //       placeholder='zipcode'
+        //       name="zipcode" 
+        //       value={formData.zipcode}  
+        //       onChange={handleChange}
+        //     />
+        //     <Form.Input 
+        //       type="text" 
+        //       id="username" 
+        //       placeholder='username'
+        //       name="username" 
+        //       value={formData.username}  
+        //       onChange={handleChange}
+        //     />
+        //     <Form.Input 
+        //       type="password" 
+        //       id="password"
+        //       placeholder='password' 
+        //       name="password" 
+        //       value={formData.password}  
+        //       onChange={handleChange}
+        //     />
+        // </Form>
