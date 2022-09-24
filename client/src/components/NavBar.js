@@ -51,6 +51,9 @@ const NavBar = ({currentUser, updateUser}) => {
         :
         <Menu className='menu'>
             <Menu.Item>
+                <img className="logo-img" style={{ fontSize: "100px" }} id="logo" src={require("../biobreak_logo.png")} alt="logo"/>
+            </Menu.Item>
+            <Menu.Item>
                 <Link to='/About'>About</Link>
             </Menu.Item>
             <Menu.Item position='right'>
@@ -61,7 +64,7 @@ const NavBar = ({currentUser, updateUser}) => {
             </Menu.Item>
         </Menu>
         }
-        <TickerTape widgetProps={{"theme": "dark"}}/> 
+        <TickerTape widgetProps={{"theme": "light"}}/> 
     </div>
   )
 }
