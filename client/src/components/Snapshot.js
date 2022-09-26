@@ -4,15 +4,6 @@ import { Tab, Menu, Input, Segment} from 'semantic-ui-react'
 
 const Snapshot = () => {
 
-    const panes = [
-        { menuItem: 'Chart', render: () => <Tab.Pane>Chart</Tab.Pane> },
-        { menuItem: 'News', render: () => <Tab.Pane>News</Tab.Pane> },
-        { menuItem: 'Ownership', render: () => <Tab.Pane>Ownership</Tab.Pane> },
-        { menuItem: 'Cash', render: () => <Tab.Pane>Cash</Tab.Pane> },
-        { menuItem: 'Expenses', render: () => <Tab.Pane>Expenses</Tab.Pane> },
-        { menuItem: 'Pipeline', render: () => <Tab.Pane>Pipeline</Tab.Pane> },
-      ]
-
   return (
     <div>
     <Menu pointing>
@@ -29,6 +20,9 @@ const Snapshot = () => {
     />
     <Menu.Item
       name='Ownership'
+    />
+    <Menu.Item
+      name='My Notes'
     />
     <Menu.Item
       name='Cash'

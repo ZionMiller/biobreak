@@ -5,10 +5,10 @@ import { Button, Segment, Grid, Image, Divider, Card } from 'semantic-ui-react'
 
 const Profile = ({handleLogOut, currentUser}) => {
   return (
-    <Segment>
-    <Grid columns={2} relaxed='very'>
+    <Segment position='center'>
+    <Grid columns={2} >
       <Grid.Column>
-        <MarketOverview widgetProps={{"theme": "light"}} />
+        <MarketOverview widgetPropsAny={{"colorTheme": "light"}} />
       </Grid.Column>
       <Grid.Column>
       <Card.Group>
