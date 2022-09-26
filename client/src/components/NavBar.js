@@ -23,7 +23,20 @@ const NavBar = ({currentUser, updateUser}) => {
                 <img className="logo-img" style={{ fontSize: "100px" }} id="logo" src={require("../biobreak_logo.png")} alt="logo"/>
             </Menu.Item>
             <Menu.Item>
-            <Ticker widgetPropsAny={{"proName": "AMEX:XBI", "colorTheme": "light", "width": 200, "height": 100}} />
+            <TickerTape widgetPropsAny={{  "symbols": [
+                                        {
+                                            "description": "DOW",
+                                            "proName": "NYSE:DOW"
+                                            },
+                                            {
+                                            "description": "NASDAQ",
+                                            "proName": "NASDAQ:NDAQ"
+                                            },
+                                            {
+                                            "description": "S&P",
+                                            "proName": "AMEX:SPY"
+                                            }
+                                        ], "colorTheme": "light"}} />
             </Menu.Item>
             <Menu.Item>
                 <Link to='/snapshot'>Snapshot</Link>
@@ -64,7 +77,24 @@ const NavBar = ({currentUser, updateUser}) => {
             </Menu.Item>
         </Menu>
         }
-        <Ticker widgetPropsAny={{"colorTheme": "light"}}/> 
+        <Ticker widgetPropsAny={{"symbols": [
+                                            {
+                                            "description": "XBI",
+                                            "proName": "AMEX:XBI"
+                                            },
+                                            {
+                                            "description": "IBB",
+                                            "proName": "NASDAQ:IBB"
+                                            },
+                                            {
+                                            "description": "LABU",
+                                            "proName": "AMEX:LABU"
+                                            },
+                                            {
+                                            "description": "LABD",
+                                            "proName": "AMEX:LABD"
+                                            }
+                                        ], "colorTheme": "light"}}/> 
     </div>
   )
 }
