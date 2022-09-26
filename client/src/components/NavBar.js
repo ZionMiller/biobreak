@@ -36,7 +36,7 @@ const NavBar = ({currentUser, updateUser}) => {
                                             "description": "S&P",
                                             "proName": "AMEX:SPY"
                                             }
-                                        ], "colorTheme": "light"}} />
+                                        ], "colorTheme": "light", "isTransparent": true, "autosize": true}} />
             </Menu.Item>
             <Menu.Item>
                 <Link to='/snapshot'>Snapshot</Link>
@@ -94,7 +94,7 @@ const NavBar = ({currentUser, updateUser}) => {
                                             "description": "LABD",
                                             "proName": "AMEX:LABD"
                                             }
-                                        ], "colorTheme": "light"}}/> 
+                                        ], "colorTheme": "light", "isTransparent": true, "autosize": true}}/> 
     </div>
   )
 }

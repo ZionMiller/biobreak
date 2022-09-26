@@ -8,7 +8,7 @@ const Profile = ({handleLogOut, currentUser}) => {
     <Segment position='center'>
     <Grid columns={2} >
       <Grid.Column>
-        <MarketOverview widgetPropsAny={{"colorTheme": "light"}} />
+        <MarketOverview widgetPropsAny={{"colorTheme": "light", "isTransparent": true}} />
       </Grid.Column>
       <Grid.Column>
       <Card.Group>

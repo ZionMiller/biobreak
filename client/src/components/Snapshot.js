@@ -1,6 +1,6 @@
 import React from 'react'
-import { Tab, Menu, Input, Segment} from 'semantic-ui-react'
-
+import { Tab, Menu, Input, Segment, MenuItem} from 'semantic-ui-react'
+import { Link, useHistory } from 'react-router-dom'
 
 const Snapshot = () => {
 
@@ -12,12 +12,12 @@ const Snapshot = () => {
         <Input icon='search' placeholder='Search...' />
       </Menu.Item>
     </Menu.Menu>
-    <Menu.Item position='right'
-      name='Chart'
-    />
-    <Menu.Item
-      name='News'
-    />
+    <Menu.Item position='right' name='Chart'>
+      <Link to='/snapshot/chart'>Chart</Link>
+    </Menu.Item>
+    <Menu.Item>
+        <Link to='/snapshot/news'>News</Link>
+    </Menu.Item>
     <Menu.Item
       name='Ownership'
     />
@@ -34,10 +34,10 @@ const Snapshot = () => {
       name='Pipeline'
     />
   </Menu>
-
+{/* 
   <Segment>
     <img src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
-  </Segment>
+  </Segment> */}
 </div>
   )
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Routes, useHistory,  useParams} from "react-router-dom";
 import NavBar from "./NavBar"
 import Snapshot from "./Snapshot"
 import Calendar from "./Calendar"
@@ -9,6 +9,8 @@ import Signup from "./Signup"
 import About from "./About";
 import Profile from "./Profile";
 import Resources from "./Resources";
+import Chart from "./Chart";
+import News from "./News";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("")
@@ -17,6 +19,8 @@ function App() {
   const [stocks, setStocks] = useState([])
 
   const history = useHistory()
+
+  // let { url } = useParams();
 
   
   // useEffect(() => {
@@ -46,8 +50,14 @@ function App() {
             <Route path='/about'>
               <About />
             </Route>
-            <Route path='/snapshot'>
+            <Route exact path='/snapshot'>
               <Snapshot />
+            </Route>
+            <Route path='/snapshot/chart'>
+              <Chart />
+            </Route>
+            <Route path='/snapshot/news'>
+              <News />
             </Route>
             <Route path='/calendar'>
               <Calendar />
