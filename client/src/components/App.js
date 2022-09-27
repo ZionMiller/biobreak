@@ -11,6 +11,11 @@ import Profile from "./Profile";
 import Resources from "./Resources";
 import Chart from "./Chart";
 import News from "./News";
+import Ownership from "./Ownership";
+import MyNotes from "./MyNotes";
+import Expenses from "./Expenses";
+import Cash from "./Cash";
+import Pipeline from "./Pipeline";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("")
@@ -58,6 +63,21 @@ function App() {
             </Route>
             <Route path='/snapshot/news'>
               <News />
+            </Route>
+            <Route path='/snapshot/ownership'>
+              <Ownership />
+            </Route>
+            <Route path='/snapshot/my-notes'>
+              <MyNotes />
+            </Route>
+            <Route path='/snapshot/cash'>
+              <Cash />
+            </Route>
+            <Route path='/snapshot/expenses'>
+              <Expenses />
+            </Route>
+            <Route path='/snapshot/pipeline'>
+              <Pipeline />
             </Route>
             <Route path='/calendar'>
               <Calendar />

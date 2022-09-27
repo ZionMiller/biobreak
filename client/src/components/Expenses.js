@@ -2,16 +2,14 @@ import React from 'react'
 import Snapshot from './Snapshot'
 
 
-const Ownership = () => {
+const Expenses = () => {
   return (
-
     <div>
         <Snapshot />
-        
-        Ownership
+        Expenses
 
     </div>
   )
 }
 
-export default Ownership
+export default Expenses

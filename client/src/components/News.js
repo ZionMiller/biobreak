@@ -1,10 +1,10 @@
 import React from 'react'
-// import 
+import Snapshot from './Snapshot'
 
 const News = () => {
   return (
     <div>
-        // <News />
+        <Snapshot />
         News
     </div>
   )

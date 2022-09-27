@@ -1,10 +1,10 @@
 import React from 'react'
-import SnapShot from './Snapshot'
+import Snapshot from './Snapshot'
 
 const Chart = () => {
   return (
       <div>
-        <SnapShot />
+        <Snapshot />
         <img src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
     </div>
   )
