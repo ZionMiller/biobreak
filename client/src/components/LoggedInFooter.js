@@ -12,7 +12,7 @@ const LoggedInFooter = () => {
         height: "200px",
         }}>
             
-        <Table  style={{backgroundColor: "#E2E5DE", textAlign: "center"}}>
+        <Table  style={{backgroundColor: "#f0ead6", textAlign: "center"}}>
         <Table.Body>
           <Table.Row>
             <Table.Cell>
@@ -31,12 +31,12 @@ const LoggedInFooter = () => {
           </Table.Row>
           <Table.Row>
             <Table.Cell>
-              <Icon name="twitter"/> <Icon name="facebook"/> <Icon name="instagram"/>
+              {/* <Icon name="twitter"/> <Icon name="facebook"/> <Icon name="instagram"/> */}
               <br></br>
               <br></br>
-              filling in other socials here
+              filling in socials here
               <br></br>
-              <Icon name="twitter"/>
+              {/* <Icon name="twitter"/> */}
             </Table.Cell>
             <Table.Cell>
               User agreement
