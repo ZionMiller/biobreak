@@ -3,7 +3,7 @@ import { Menu, Checkbox, Icon } from 'semantic-ui-react';
 import { Link, useHistory } from 'react-router-dom'
 import { TickerTape, Ticker } from "react-tradingview-embed";
 
-const NavBar = ({currentUser, updateUser, handleDarkModeClick}) => {
+const NavBar = ({currentUser, handleDarkModeClick}) => {
 
   return (
     <div id="navBar">

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route, Routes, useHistory,  useParams} from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import NavBar from "./NavBar"
 import Snapshot from "./Snapshot"
 import CatalystCalendar from "./CatalystCalendar"
@@ -25,6 +25,7 @@ function App() {
   // const [searchQuery, setSearchQuery] = useState("")
   const [ticker, setTicker] = useState("")
   const [errors, setErrors] = useState([]);
+  const [reqObj, setReqObj] = useState("")
 
   const history = useHistory()
 
@@ -52,25 +53,33 @@ function App() {
     setIsDarkMode((isDarkMode) => !isDarkMode);
   }
 
-    function searchedTicker(e) {
+  
+    function searchedTicker(e, ticker) {
     e.preventDefault();
-    ticker.toUpperCase()
-    setTicker(ticker);
-    fetch("/stocks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(ticker),
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((ticker) => setTicker(ticker));
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
+    // ticker.toUpperCase()
+    setReqObj({ticker})
   }
+  
+  useEffect(() => {
+    if (reqObj !== "") {
+      fetch('/stocks', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(reqObj),
+      }).then((r) => {
+        if (r.ok) {
+          r.json().then((ticker) => setTicker(ticker));
+        } else {
+          r.json().then((err) => setErrors(err.errors));
+        }
+      });
+     }    
+  }, [reqObj])
+
+
   console.log(ticker)
 
   function addWatchlist(params) {
@@ -95,7 +104,11 @@ function App() {
                 />
             </Route>
             <Route path='/snapshot/chart'>
-              <Chart searchedTicker={searchedTicker} ticker={ticker}/>
+              <Chart 
+                searchedTicker={searchedTicker} 
+                ticker={ticker} 
+                setTicker={setTicker}
+              />
             </Route>
             <Route path='/snapshot/news'>
               <News />

@@ -8,12 +8,14 @@ const CatalystCalendar = () => {
   return (
     <div>
       <h2>Catalyst Calendar</h2>
-      <Calendar 
-      localizer={localizer}
-      startAccessor="start"
-      endAccessor="end"
-      style={{ height: 500 }}
-      />
+      <div id='calendar' style={{display: "flex"}}>
+        <Calendar 
+        localizer={localizer}
+        startAccessor="start"
+        endAccessor="end"
+        style={{ height: 350 }}
+        />
+      </div>
     </div>
   )
 }

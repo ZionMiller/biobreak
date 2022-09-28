@@ -16,9 +16,12 @@ class StocksController < ApplicationController
     #         ])
     # end
     
+    def index
         
+    end
+    
     def create 
-        stock = Stock.create!(stocks_params)
+        stock = Stock.create(ticker: params[:ticker])
         render json: stock, status: :created
     end
 

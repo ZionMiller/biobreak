@@ -1,35 +1,37 @@
 import React from 'react'
 import { MarketOverview } from "react-tradingview-embed";
-import { Button, Segment, Grid, Image, Divider, Card } from 'semantic-ui-react'
+import { Button, Segment, Grid, Divider, Card } from 'semantic-ui-react'
 
 
 const Profile = ({handleLogOut, currentUser}) => {
   return (
-    <Segment position='center'>
+    <Segment textAlign='center'>
     <Grid columns={2} >
       <Grid.Column>
         <MarketOverview widgetPropsAny={{"colorTheme": "light", "isTransparent": true}} />
       </Grid.Column>
-      <Grid.Column>
-      <Card.Group>
-    <Card>
-      <Card.Content>
-        <Card.Header>{(currentUser.first_name) + "  " + (currentUser.last_name)}</Card.Header>
-        <Card.Meta>Zip: {currentUser.zipcode}</Card.Meta>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Update Profile
-          </Button>
-          <Button onClick={handleLogOut} basic color='red'>
-            Logout
-          </Button>
-        </div>
-      </Card.Content>
-    </Card>
+      <Grid.Column >
+        <Card.Group>
+          <Card>
+            <Card.Content>
+              <Card.Header>{(currentUser.first_name) + "  " + (currentUser.last_name)}</Card.Header>
+              <Card.Meta>Zip: {currentUser.zipcode}</Card.Meta>
+              <Card.Meta>Email: {currentUser.email}</Card.Meta>
+              <Card.Meta>Password: hidden</Card.Meta>
+            </Card.Content>
+            <Card.Content extra>
+            <div className='ui two buttons'>
+              {/* <Button basic color='green'>
+                Update Profile
+              </Button> */}
+              <Button onClick={handleLogOut} basic color='red'>
+                Logout
+              </Button>
+            </div>
+          </Card.Content>
+        </Card>
   
-  </Card.Group>
+        </Card.Group>
       </Grid.Column>
     </Grid>
 

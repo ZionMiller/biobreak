@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { AdvancedChart } from "react-tradingview-embed";
 import Snapshot from './Snapshot'
 
-const Chart = ({ticker}) => {
+const Chart = ({ticker, setTicker}) => {
 
     let themeMode = "light"
   return (
       <div>
-        <Snapshot />
+        <Snapshot ticker={ticker} setTicker={setTicker}/>
         <AdvancedChart widgetPropsAny={
             {
                 "theme": `$${themeMode}`, "autosize": false,

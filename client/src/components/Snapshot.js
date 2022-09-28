@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { Tab, Menu, Input, Button, Form } from 'semantic-ui-react'
-import { Link, useHistory } from 'react-router-dom'
+import React from 'react'
+import { Menu, Input, Button, Form } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 const Snapshot = ({searchedTicker, ticker, setTicker, addWatchlist}) => {
 
@@ -8,7 +8,7 @@ const Snapshot = ({searchedTicker, ticker, setTicker, addWatchlist}) => {
     <div>
       <Menu pointing>
         <Menu.Menu style={{padding: "5px"}}>
-          <Form position='left'>
+          <Form position='left' onSubmit={searchedTicker}>
           <Input action='Search' 
               placeholder={ticker ? `${ticker}` : "Search..."}
               style={{width: "115px"}}
