@@ -3,27 +3,17 @@ import { Menu, Checkbox, Icon } from 'semantic-ui-react';
 import { Link, useHistory } from 'react-router-dom'
 import { TickerTape, Ticker } from "react-tradingview-embed";
 
-const NavBar = ({currentUser, updateUser}) => {
-
-// "symbol": "NASDAQ:AAPL"
-    const changeTheme = (dark_mode) => {
-        if (dark_mode) {
-
-        } else {
-
-        }
-
-    }
+const NavBar = ({currentUser, updateUser, handleDarkModeClick}) => {
 
   return (
     <div id="navBar">
         { currentUser ?
         <Menu className='menu' >
             <Menu.Item>
-                <img className="logo-img" style={{ fontSize: "100px" }} id="logo" src={require("../biobreak_logo.png")} alt="logo"/>
+                <img className="logo-img" style={{ fontSize: "100px", padding: "0px" }} id="logo" src={require("../biobreak_logo.png")} alt="logo"/>
             </Menu.Item>
             <Menu.Item>
-            <TickerTape widgetPropsAny={{  "symbols": [
+                <TickerTape style={{ padding: "0px" }} widgetPropsAny={{  "symbols": [
                                         {
                                             "description": "DOW",
                                             "proName": "NYSE:DOW"
@@ -38,7 +28,7 @@ const NavBar = ({currentUser, updateUser}) => {
                                             }
                                         ], "colorTheme": "light", "isTransparent": true, "autosize": true}} />
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item position='right'>
                 <Link to='/snapshot'>Snapshot</Link>
             </Menu.Item>
             <Menu.Item>
@@ -53,18 +43,18 @@ const NavBar = ({currentUser, updateUser}) => {
             <Menu.Item >
             <i class="sun icon"></i>
                 <div class="ui fitted toggle checkbox">
-                    <Checkbox toggle onClick={changeTheme}/>
+                    <Checkbox toggle onClick={handleDarkModeClick}/>
                 </div>
             <i class="moon icon"></i>
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item style={{margin: "0px"}}>
                 <Link to='/profile'><Icon name="user circle" size="big"/></Link>
             </Menu.Item>
         </Menu>
         :
         <Menu className='menu'>
             <Menu.Item>
-                <img className="logo-img" style={{ fontSize: "100px" }} id="logo" src={require("../biobreak_logo.png")} alt="logo"/>
+                <img className="logo-img" style={{ fontSize: "100px", padding: "0px" }} id="logo" src={require("../biobreak_logo.png")} alt="logo"/>
             </Menu.Item>
             <Menu.Item>
                 <Link to='/About'>About</Link>

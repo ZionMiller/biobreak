@@ -7,6 +7,10 @@ class ApplicationController < ActionController::API
 
     private
 
+    # def searched_symbol
+    #     @searched_symbol ||= Stock.find_by_TradingSymbol(session[:TradingSymbol])
+    # end
+
     def unprocessable_entity_response(exception)
         render json: { errrors: exception.record.errors }, status: :unprocessable_entity
     end

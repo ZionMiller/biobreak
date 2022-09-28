@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { AdvancedChart } from "react-tradingview-embed";
 import Snapshot from './Snapshot'
 
-const Chart = () => {
+const Chart = ({ticker}) => {
+
+    let themeMode = "light"
   return (
       <div>
         <Snapshot />
-        <img src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+        <AdvancedChart widgetPropsAny={
+            {
+                "theme": `$${themeMode}`, "autosize": false,
+                "symbol": `NASDAQ:${ticker}`
+            }
+        }/>
     </div>
   )
 }

@@ -16,24 +16,24 @@ import MyNotes from "./MyNotes";
 import Expenses from "./Expenses";
 import Cash from "./Cash";
 import Pipeline from "./Pipeline";
+import LoggedInFooter from "./LoggedInFooter";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("")
   const updateUser = (user) => setCurrentUser(user)
-
-  const [stocks, setStocks] = useState([])
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  // const [searchQuery, setSearchQuery] = useState("")
+  const [ticker, setTicker] = useState("")
+  const [errors, setErrors] = useState([]);
 
   const history = useHistory()
 
-  // let { url } = useParams();
-
-  
   // useEffect(() => {
-  //   fetch('/hello')
-  //   .then(res => res.json())
-  //   .then(data => {setStocks(data)})
+  //   fetch("/stocks")
+  //   .then((r) => r.json())
+  //   .then((stocks) => setStocks(stocks));
   // }, []);
-  
+
   useEffect(() => {
     fetch("/me")
     .then((r) => r.json())
@@ -48,18 +48,46 @@ function App() {
       history.push('login') // redirect user to home page after logging out
   }
 
+  function handleDarkModeClick() {
+    setIsDarkMode((isDarkMode) => !isDarkMode);
+  }
+
+    function searchedTicker(e) {
+    e.preventDefault();
+    ticker.toUpperCase()
+    setTicker(ticker);
+    fetch("/stocks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(ticker),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((ticker) => setTicker(ticker));
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
+  }
+  console.log(ticker)
+
   return (
       <div className="App">
-        <NavBar currentUser={currentUser} updateUser={updateUser}/>
+        <NavBar currentUser={currentUser} 
+          updateUser={updateUser} 
+          handleDarkModeClick={handleDarkModeClick}
+          />
           <Switch>
             <Route path='/about'>
               <About />
             </Route>
             <Route exact path='/snapshot'>
-              <Snapshot />
+              <Snapshot searchedTicker={searchedTicker} ticker={ticker} setTicker={setTicker}/>
             </Route>
             <Route path='/snapshot/chart'>
-              <Chart />
+              <Chart searchedTicker={searchedTicker} ticker={ticker}/>
             </Route>
             <Route path='/snapshot/news'>
               <News />
@@ -98,6 +126,7 @@ function App() {
               <Signup updateUser={updateUser}/>
             </Route>
           </Switch>
+        <LoggedInFooter />
       </div>
   );
 }
