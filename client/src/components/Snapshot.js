@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Tab, Menu, Input, Segment, MenuItem, Label, Button, Form } from 'semantic-ui-react'
+import { Tab, Menu, Input, Button, Form } from 'semantic-ui-react'
 import { Link, useHistory } from 'react-router-dom'
 
 const Snapshot = ({searchedTicker, ticker, setTicker, addWatchlist}) => {

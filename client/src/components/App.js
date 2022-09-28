@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Routes, useHistory,  useParams} from "react-router-dom";
 import NavBar from "./NavBar"
 import Snapshot from "./Snapshot"
-import Calendar from "./Calendar"
+import CatalystCalendar from "./CatalystCalendar"
 import Watchlist from "./Watchlist"
 import Login from "./Login"
 import Signup from "./Signup"
@@ -116,7 +116,7 @@ function App() {
               <Pipeline />
             </Route>
             <Route path='/calendar'>
-              <Calendar />
+              <CatalystCalendar />
             </Route>
             <Route path='/watchlist'>
               <Watchlist />
