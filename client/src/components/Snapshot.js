@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Tab, Menu, Input, Segment, MenuItem, Label, Button, Form } from 'semantic-ui-react'
 import { Link, useHistory } from 'react-router-dom'
 
-const Snapshot = ({searchedTicker, ticker, setTicker}) => {
+const Snapshot = ({searchedTicker, ticker, setTicker, addWatchlist}) => {
 
   return (
     <div>
@@ -45,7 +45,13 @@ const Snapshot = ({searchedTicker, ticker, setTicker}) => {
         <Menu.Item>
           <Link to='/snapshot/pipeline'>Pipeline</Link>
         </Menu.Item>
-        <Button style={{backgroundColor: "#FFB52E"}}>Add to watchlist</Button>
+
+        <Button style={{backgroundColor: "#FFB52E"}}
+          onClick={addWatchlist}
+        >
+          {ticker ? `Add to ${ticker.toUpperCase()} Watchlist` : "Add to Watchlist"}
+        </Button>
+
     </Menu>
 
   </div>

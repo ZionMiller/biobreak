@@ -73,6 +73,10 @@ function App() {
   }
   console.log(ticker)
 
+  function addWatchlist(params) {
+    
+  }
+
   return (
       <div className="App">
         <NavBar currentUser={currentUser} 
@@ -84,7 +88,11 @@ function App() {
               <About />
             </Route>
             <Route exact path='/snapshot'>
-              <Snapshot searchedTicker={searchedTicker} ticker={ticker} setTicker={setTicker}/>
+              <Snapshot searchedTicker={searchedTicker} 
+                ticker={ticker} 
+                setTicker={setTicker}
+                addWatchlist={addWatchlist}
+                />
             </Route>
             <Route path='/snapshot/chart'>
               <Chart searchedTicker={searchedTicker} ticker={ticker}/>
