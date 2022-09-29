@@ -30,3 +30,6 @@
 
 # API Keys
 .env
+
+# biobreak symbols & pipeline data
+/Biobreaksymbols.csv 

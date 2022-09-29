@@ -4,7 +4,7 @@ import { Table } from 'semantic-ui-react'
 
 
 
-const Pipeline = () => {
+const Pipeline = ({ticker}) => {
   return (
     <div>
         <Snapshot />

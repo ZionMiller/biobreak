@@ -4,7 +4,7 @@ import { Form, Table, Button  } from 'semantic-ui-react'
 
 
 
-const MyNotes = () => {
+const MyNotes = ({ticker}) => {
   return (
     <div>
         <Snapshot />

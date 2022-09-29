@@ -1,0 +1,3 @@
+class BioStocksController < ApplicationController
+    
+end

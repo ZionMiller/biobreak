@@ -3,7 +3,7 @@ import Snapshot from './Snapshot'
 import {HorizontalBarSeries} from 'react-vis';
 
 
-const Cash = () => {
+const Cash = ({ticker}) => {
 
   const myData = [
     {x: 'A', y: 10},

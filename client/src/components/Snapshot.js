@@ -2,18 +2,18 @@ import React from 'react'
 import { Menu, Input, Button, Form } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-const Snapshot = ({searchedTicker, ticker, setTicker, addWatchlist}) => {
-
+const Snapshot = ({ searchedTicker, addWatchlist, setFormInput, formInput}) => {
+ 
   return (
     <div>
       <Menu pointing>
         <Menu.Menu style={{padding: "5px"}}>
           <Form position='left'>
           <input type='text'
-              placeholder={ticker ? `${ticker}` : "Search..."}
+              placeholder={formInput ? `${formInput}` : "Search..."}
               style={{width: "115px"}}
               // value={ticker}
-              onChange={(e) => setTicker(e.target.value)}
+              onChange={((e) => setFormInput(e.target.value))}
               />
               <Button type='submit' onClick={searchedTicker}>Submit</Button>
           </Form>
@@ -50,7 +50,7 @@ const Snapshot = ({searchedTicker, ticker, setTicker, addWatchlist}) => {
         <Button style={{backgroundColor: "#FFB52E"}}
           onClick={addWatchlist}
         >
-          {ticker ? `Add to ${ticker} Watchlist` : "Add to Watchlist"}
+          {formInput ? `Add to ${formInput.toUpperCase()} Watchlist` : "Add to Watchlist"}
         </Button>
 
     </Menu>

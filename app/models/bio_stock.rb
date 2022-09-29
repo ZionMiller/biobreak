@@ -1,0 +1,2 @@
+class BioStock < ApplicationRecord
+end

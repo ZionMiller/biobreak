@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-    has_many :watchlist_stocks
-    has_many :stocks, through: :watchlist_stocks
+    has_many :watchlists
+    has_many :stocks, through: :watchlists
 
     has_secure_password
 

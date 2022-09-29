@@ -2,6 +2,8 @@ class StockSerializer < ActiveModel::Serializer
   # attributes :id, :ticker, :DocumentFiscalPeriodFocus, :DocumentFiscalYearFocus, :CashCashEquivalentsAndMarketableSecurities, :Assets,
   # :ResearchAndDevelopmentExpense, :GeneralAndAdministrativeExpense, :NetIncomeLoss, :OperatingExpenses, :CommonStockSharesOutstanding
 
-  attributes :id, :ticker
+  has_many :watchlist_stocks
+
+  attributes :id, :ticker, :stock
   
 end

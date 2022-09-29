@@ -3,7 +3,7 @@ import { Icon, Table, Button } from 'semantic-ui-react'
 
 const Watchlist = () => {
   return (
-    <Table celled>
+    <Table celled style={{backgroundColor: "#f0ead6", textAlign: "center"}}>
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell>Ticker</Table.HeaderCell>

@@ -1,6 +1,6 @@
 class Stock < ApplicationRecord
+  has_many :watchlists
+  has_many :users, through: :watchlists
 
-    has_many :watchlist_stocks
-    has_many :users, through: :watchlist_stocks
-
+  validates :ticker, presence: true
 end

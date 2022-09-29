@@ -2,7 +2,7 @@ import React from 'react'
 import Snapshot from './Snapshot'
 
 
-const Expenses = () => {
+const Expenses = ({ticker}) => {
   return (
     <div>
         <Snapshot />

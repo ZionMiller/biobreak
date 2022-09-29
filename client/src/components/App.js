@@ -23,18 +23,19 @@ function App() {
   const updateUser = (user) => setCurrentUser(user)
   const [isDarkMode, setIsDarkMode] = useState(false);
   // const [searchQuery, setSearchQuery] = useState("")
-  const [ticker, setTicker] = useState("")
   const [errors, setErrors] = useState([]);
-  const [recievedData, setRecievedData] = useState([])
+
+  const [formInput, setFormInput] = useState("")
+  const [watchlists, setWatchlist] = useState([])
 
   // setTicker(ticker.toUpperCase())
   const history = useHistory()
-
-  // useEffect(() => {
-  //   fetch("/stocks")
-  //   .then((r) => r.json())
-  //   .then((stocks) => setStocks(stocks));
-  // }, []);
+  
+  useEffect(() => {
+    fetch("/watchlists")
+    .then((r) => r.json())
+    .then((watchlists) => setWatchlist(watchlists));
+  }, []);
 
   useEffect(() => {
     fetch("/me")
@@ -54,26 +55,29 @@ function App() {
     setIsDarkMode((isDarkMode) => !isDarkMode);
   }
 
-    function searchedTicker(e, ticker) {
+  // Post ticker instance to db
+  console.log("watchlists", watchlists)
+
+  console.log("input", formInput)
+
+    function searchedTicker(e) {
     e.preventDefault();
-    fetch('/stocks', {
+      
+    fetch('/watchlist', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ticker}),
+      body: JSON.stringify({tickers: formInput}),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((data) => setRecievedData(data));
+        r.json().then((watchlists) => setWatchlist(watchlists));
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
     });
    }    
-
-
-  console.log("stateful ticker", ticker)
-  console.log("datalog", recievedData)
+   
 
   function addWatchlist(params) {
     
@@ -91,40 +95,44 @@ function App() {
             </Route>
             <Route exact path='/snapshot'>
               <Snapshot searchedTicker={searchedTicker} 
-                ticker={ticker} 
-                setTicker={setTicker}
                 addWatchlist={addWatchlist}
+                setFormInput={setFormInput}
+                formInput={formInput}
                 />
             </Route>
             <Route path='/snapshot/chart'>
               <Chart 
                 searchedTicker={searchedTicker} 
-                ticker={ticker} 
-                setTicker={setTicker}
               />
             </Route>
             <Route path='/snapshot/news'>
-              <News />
+              <News searchedTicker={searchedTicker} 
+                />
             </Route>
             <Route path='/snapshot/ownership'>
-              <Ownership />
+              <Ownership searchedTicker={searchedTicker} 
+                />
             </Route>
             <Route path='/snapshot/my-notes'>
-              <MyNotes />
+              <MyNotes searchedTicker={searchedTicker} 
+                />
             </Route>
             <Route path='/snapshot/cash'>
-              <Cash />
+              <Cash searchedTicker={searchedTicker} 
+                />
             </Route>
             <Route path='/snapshot/expenses'>
-              <Expenses />
+              <Expenses searchedTicker={searchedTicker} 
+                />
             </Route>
             <Route path='/snapshot/pipeline'>
-              <Pipeline />
+              <Pipeline searchedTicker={searchedTicker} 
+                />
             </Route>
             <Route path='/calendar'>
               <CatalystCalendar />
             </Route>
-            <Route path='/watchlist'>
+            <Route path='/watchlists'>
               <Watchlist />
             </Route>
             <Route path='/resources'>

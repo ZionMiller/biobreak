@@ -3,7 +3,7 @@ import Snapshot from './Snapshot'
 import { Card } from 'semantic-ui-react'
 
 
-const News = () => {
+const News = ({ticker}) => {
 
   // sample data for news cards
   const items = [

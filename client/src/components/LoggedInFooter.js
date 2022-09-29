@@ -9,7 +9,7 @@ const LoggedInFooter = () => {
         position: "absolute",
         bottom: "0",
         width: "100%",
-        height: "200px",
+        height: "90px",
         }}>
             
         <Table  style={{backgroundColor: "#f0ead6", textAlign: "center"}}>
