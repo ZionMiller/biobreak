@@ -7,7 +7,7 @@ import { Table } from 'semantic-ui-react'
 const Pipeline = ({ticker}) => {
   return (
     <div>
-        <Snapshot />
+
         <h2>Pipeline</h2>
 
       <Table style={{backgroundColor: "#ca5cdd", textAlign: "center"}}>

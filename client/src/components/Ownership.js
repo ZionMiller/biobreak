@@ -8,7 +8,6 @@ const Ownership = () => {
   const myData = [{angle: 1}, {angle: 5}, {angle: 2}]
   return (
     <div>
-        <Snapshot />
 
         <RadialChart style={{alignItems: "center"}}
           data={myData}

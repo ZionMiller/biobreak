@@ -5,7 +5,7 @@ import Snapshot from './Snapshot'
 const Expenses = ({ticker}) => {
   return (
     <div>
-        <Snapshot />
+   
         Expenses
 
     </div>

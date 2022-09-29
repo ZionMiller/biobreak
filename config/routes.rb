@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   resources :watchlists
-  resources :bio_stocks
+  # resources :bio_stocks, param: :symbol
   resources :stocks
   resources :users
 
   post '/watchlist', to: 'watchlists#create'
   get '/watchlist', to: 'watchlists#show'
+
+  get '/search/:symbol', to: 'bio_stocks#search', as: 'search'
+
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show'
   post '/login', to: 'sessions#create'
@@ -13,7 +16,7 @@ Rails.application.routes.draw do
 
   # get '/stocks', to: "stocks#get_stocks"
 
-  get '*path',
-      to: 'fallback#index',
-      constraints: ->(req) { !req.xhr? && req.format.html? }
+  # get '*path',
+  #     to: 'fallback#index',
+  #     constraints: ->(req) { !req.xhr? && req.format.html? }
 end

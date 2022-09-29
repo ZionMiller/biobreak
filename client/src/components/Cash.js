@@ -13,7 +13,7 @@ const Cash = ({ticker}) => {
 
   return (
     <div>
-        <Snapshot />
+ 
         Cash
     </div>
   )

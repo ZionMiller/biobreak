@@ -7,7 +7,7 @@ import { Form, Table, Button  } from 'semantic-ui-react'
 const MyNotes = ({ticker}) => {
   return (
     <div>
-        <Snapshot />
+
         <br></br>
         <Form>
           <Form.Group widths='equal'>

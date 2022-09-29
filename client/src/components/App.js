@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route, BrowserRouter as Router, Routes useHistory } from "react-router-dom";
 import NavBar from "./NavBar"
 import Snapshot from "./Snapshot"
 import CatalystCalendar from "./CatalystCalendar"
@@ -28,6 +28,9 @@ function App() {
   const [formInput, setFormInput] = useState("")
   const [watchlists, setWatchlist] = useState([])
 
+  const [query, setQuery] = useState("")
+  const [returnedQuery, setReturnedQuery] = useState("")
+
   // setTicker(ticker.toUpperCase())
   const history = useHistory()
   
@@ -36,6 +39,8 @@ function App() {
     .then((r) => r.json())
     .then((watchlists) => setWatchlist(watchlists));
   }, []);
+
+  console.log(query)
 
   useEffect(() => {
     fetch("/me")
@@ -55,12 +60,17 @@ function App() {
     setIsDarkMode((isDarkMode) => !isDarkMode);
   }
 
+  function name(params) {
+    // this function will update state of query for all child components
+    
+  }
+
   // Post ticker instance to db
   console.log("watchlists", watchlists)
 
   console.log("input", formInput)
 
-    function searchedTicker(e) {
+    function addWatchlist(e) {
     e.preventDefault();
       
     fetch('/watchlist', {
@@ -77,58 +87,78 @@ function App() {
       }
     });
    }    
-   
 
-  function addWatchlist(params) {
-    
-  }
 
   return (
       <div className="App">
-        <NavBar currentUser={currentUser} 
+        <NavBar 
+          currentUser={currentUser} 
           updateUser={updateUser} 
           handleDarkModeClick={handleDarkModeClick}
-          />
-          <Switch>
+        />
+          <Router>
             <Route path='/about'>
               <About />
             </Route>
-            <Route exact path='/snapshot'>
-              <Snapshot searchedTicker={searchedTicker} 
+
+            <Route path='/snapshot' element= {
+              <Snapshot
                 addWatchlist={addWatchlist}
                 setFormInput={setFormInput}
                 formInput={formInput}
                 />
-            </Route>
-            <Route path='/snapshot/chart'>
+            }/>
+        
+            <Route path='/snapshot/chart' element= {
               <Chart 
-                searchedTicker={searchedTicker} 
+              
               />
-            </Route>
+            }/>
+
             <Route path='/snapshot/news'>
-              <News searchedTicker={searchedTicker} 
+              <News 
+                
                 />
             </Route>
-            <Route path='/snapshot/ownership'>
-              <Ownership searchedTicker={searchedTicker} 
+
+            <Route path='/snapshot/ownership' elemment= {
+              <Ownership 
+              
+              />
+            }/>
+
+            <Route path='/snapshot/my-notes' element= {
+              <MyNotes 
+              query={query}
+              setQuery={setQuery}
+              search={search}
                 />
-            </Route>
-            <Route path='/snapshot/my-notes'>
-              <MyNotes searchedTicker={searchedTicker} 
+            }/>
+
+            <Route path='/snapshot/cash' element= {
+              <Cash 
+              query={query}
+              setQuery={setQuery}
+              search={search}
                 />
-            </Route>
-            <Route path='/snapshot/cash'>
-              <Cash searchedTicker={searchedTicker} 
+            }/>
+  
+            <Route path='/snapshot/expenses' element= {
+              <Expenses 
+                query={query}
+                setQuery={setQuery}
+                search={search}
                 />
-            </Route>
-            <Route path='/snapshot/expenses'>
-              <Expenses searchedTicker={searchedTicker} 
+            }/>
+
+            <Route path='/snapshot/pipeline' element= {
+              <Pipeline 
+              query={query}
+              setQuery={setQuery}
+              search={search}
                 />
-            </Route>
-            <Route path='/snapshot/pipeline'>
-              <Pipeline searchedTicker={searchedTicker} 
-                />
-            </Route>
+            }/>
+
             <Route path='/calendar'>
               <CatalystCalendar />
             </Route>
@@ -147,7 +177,7 @@ function App() {
             <Route path='/signup'>
               <Signup updateUser={updateUser}/>
             </Route>
-          </Switch>
+          </Router>
         <LoggedInFooter />
       </div>
   );

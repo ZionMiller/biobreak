@@ -29,7 +29,6 @@ const News = ({ticker}) => {
 
   return (
     <div>
-        <Snapshot />
         <h2>News</h2>
         <Card.Group items={items}/>
     </div>

@@ -2,20 +2,29 @@ import React from 'react'
 import { Menu, Input, Button, Form } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-const Snapshot = ({ searchedTicker, addWatchlist, setFormInput, formInput}) => {
- 
+const Snapshot = ({ query, setQuery, search, searchedTicker, addWatchlist, setFormInput, formInput}) => {
+
+
+  function search() {
+    fetch(`/search/${query}`)
+    .then((r) => r.json())
+    .then((returnedQuery) => setReturnedQuery(returnedQuery));
+  }
+
+
+  
   return (
     <div>
       <Menu pointing>
         <Menu.Menu style={{padding: "5px"}}>
           <Form position='left'>
           <input type='text'
-              placeholder={formInput ? `${formInput}` : "Search..."}
+              placeholder={query ? `${query}` : "Search..."}
               style={{width: "115px"}}
-              // value={ticker}
-              onChange={((e) => setFormInput(e.target.value))}
+              value={query}
+              onChange={((e) => setQuery(e.target.value))}
               />
-              <Button type='submit' onClick={searchedTicker}>Submit</Button>
+              <Button type='submit' onClick={search}>Submit</Button>
           </Form>
         </Menu.Menu>
 
@@ -50,7 +59,7 @@ const Snapshot = ({ searchedTicker, addWatchlist, setFormInput, formInput}) => {
         <Button style={{backgroundColor: "#FFB52E"}}
           onClick={addWatchlist}
         >
-          {formInput ? `Add to ${formInput.toUpperCase()} Watchlist` : "Add to Watchlist"}
+          {query ? `Add to ${query.toUpperCase()} Watchlist` : "Add to Watchlist"}
         </Button>
 
     </Menu>
