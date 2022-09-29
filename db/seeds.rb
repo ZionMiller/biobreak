@@ -4,9 +4,7 @@ puts "done seeding that person"
 
 
 puts "seeding some stonks"
-
-
-puts "done seeding stonks"
+Stock.create(ticker: "APPL", company_name: "testing", my_notes: "another test")
 
  
 puts "seeding watchlist"

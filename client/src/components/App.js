@@ -25,8 +25,9 @@ function App() {
   // const [searchQuery, setSearchQuery] = useState("")
   const [ticker, setTicker] = useState("")
   const [errors, setErrors] = useState([]);
-  const [reqObj, setReqObj] = useState("")
+  const [recievedData, setRecievedData] = useState([])
 
+  // setTicker(ticker.toUpperCase())
   const history = useHistory()
 
   // useEffect(() => {
@@ -53,34 +54,26 @@ function App() {
     setIsDarkMode((isDarkMode) => !isDarkMode);
   }
 
-  
     function searchedTicker(e, ticker) {
     e.preventDefault();
-    // ticker.toUpperCase()
-    setReqObj({ticker})
-  }
-  
-  useEffect(() => {
-    if (reqObj !== "") {
-      fetch('/stocks', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(reqObj),
-      }).then((r) => {
-        if (r.ok) {
-          r.json().then((ticker) => setTicker(ticker));
-        } else {
-          r.json().then((err) => setErrors(err.errors));
-        }
-      });
-     }    
-  }, [reqObj])
+    fetch('/stocks', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ticker}),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((data) => setRecievedData(data));
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
+   }    
 
 
-  console.log(ticker)
+  console.log("stateful ticker", ticker)
+  console.log("datalog", recievedData)
 
   function addWatchlist(params) {
     

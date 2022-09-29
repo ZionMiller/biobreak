@@ -21,7 +21,7 @@ class StocksController < ApplicationController
     end
     
     def create 
-        stock = Stock.create(ticker: params[:ticker])
+        stock = Stock.create(stocks_params)
         render json: stock, status: :created
     end
 
@@ -30,6 +30,8 @@ class StocksController < ApplicationController
     def stocks_params
         params.permit(:ticker)
     end
+
+    
 
     # def stocks_news
     #     locater = "https://cloud.iexapis.com/v1/stock/aapl/batch?types=quote,news,chart&range=1m&last=10&token=API_KEY_SECRET"

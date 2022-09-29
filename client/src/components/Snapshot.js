@@ -8,13 +8,14 @@ const Snapshot = ({searchedTicker, ticker, setTicker, addWatchlist}) => {
     <div>
       <Menu pointing>
         <Menu.Menu style={{padding: "5px"}}>
-          <Form position='left' onSubmit={searchedTicker}>
-          <Input action='Search' 
+          <Form position='left'>
+          <input type='text'
               placeholder={ticker ? `${ticker}` : "Search..."}
               style={{width: "115px"}}
-              value={ticker}
+              // value={ticker}
               onChange={(e) => setTicker(e.target.value)}
               />
+              <Button type='submit' onClick={searchedTicker}>Submit</Button>
           </Form>
         </Menu.Menu>
 
@@ -49,7 +50,7 @@ const Snapshot = ({searchedTicker, ticker, setTicker, addWatchlist}) => {
         <Button style={{backgroundColor: "#FFB52E"}}
           onClick={addWatchlist}
         >
-          {ticker ? `Add to ${ticker.toUpperCase()} Watchlist` : "Add to Watchlist"}
+          {ticker ? `Add to ${ticker} Watchlist` : "Add to Watchlist"}
         </Button>
 
     </Menu>
