@@ -50,9 +50,9 @@ function App() {
   }, []);
 
   // redirect user to home page after logging out etc
-  useEffect(() => {
-    currentUser.length === 0 ? navigate("/login") : navigate("/profile") 
-  }, [currentUser])
+  // useEffect(() => {
+  //   currentUser.length === 0 ? navigate("/login") : navigate("/profile") 
+  // }, [currentUser])
 
   // const goToProfile = ( ) => useNavigate("/profile");
   // const goToLogin = ( ) => useNavigate("/login");
@@ -110,7 +110,7 @@ function App() {
               <About />
             }/>
 
-            <Route path='/snapshot' element={
+            <Route path='snapshot' element={
               <Snapshot
                 query={query}
                 setQuery={setQuery}
@@ -121,20 +121,23 @@ function App() {
                 />
             }>
 
-                <Route path='/snapshot/chart' element={
+                <Route path='chart' element={
                   <Chart              
                     query={query}
                   />
                 }/>
                 
                 <Route path='/snapshot/news' element={
-                  <News            
-                    />
-
+                  <News     
+                  query={query}
+                  setQuery={setQuery}
+                  />
                 }/>
 
-                <Route path='/snapshot/ownership' elemment={
-                  <Ownership             
+                <Route path='/snapshot/ownership' element={
+                  <Ownership     
+                  query={query}
+                  setQuery={setQuery} 
                   />
                 }/>
 
@@ -167,6 +170,7 @@ function App() {
                 }/>
 
             </Route>
+            
         
 
             <Route path='/calendar' element={

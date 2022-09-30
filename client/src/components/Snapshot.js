@@ -2,7 +2,7 @@ import React from 'react'
 import { Menu, Input, Button, Form } from 'semantic-ui-react'
 import Chart from "./Chart";
 
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
 const Snapshot = ({ query, setQuery, search, addWatchlist, setReturnedQuery}) => {
 
@@ -12,7 +12,6 @@ const Snapshot = ({ query, setQuery, search, addWatchlist, setReturnedQuery}) =>
     .then((r) => r.json())
     .then((returnedQuery) => setReturnedQuery(returnedQuery));
   }
-
   
   return (
     <div>
@@ -64,6 +63,7 @@ const Snapshot = ({ query, setQuery, search, addWatchlist, setReturnedQuery}) =>
         </Button>
 
     </Menu>
+    <Outlet />
 
   </div>
   )
