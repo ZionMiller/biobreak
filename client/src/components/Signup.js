@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { Button, Form } from 'semantic-ui-react'
-import {useHistory} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 
 
 const Signup = ({updateUser}) => {
@@ -19,7 +19,7 @@ const Signup = ({updateUser}) => {
         const [errors, setErrors] = useState([])
     
         //gives you access to the history instance that you may use to navigate.
-        const history = useHistory()
+        const history = useParams()
     
         const handleSubmit = (e) => {
             e.preventDefault()

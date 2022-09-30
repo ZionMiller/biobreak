@@ -2,7 +2,7 @@ import React from 'react'
 import { Menu, Input, Button, Form } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-const Snapshot = ({ query, setQuery, search, searchedTicker, addWatchlist, setFormInput, formInput}) => {
+const Snapshot = ({ query, setQuery, search, addWatchlist, setReturnedQuery}) => {
 
 
   function search() {
