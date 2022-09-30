@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Icon, Table, Button } from 'semantic-ui-react'
 
 const Watchlist = () => {
+
+  const [results, setResults] = useState([])
+
+  useEffect(() => {
+    fetch("/watchlist")
+    .then((r) => r.json())
+    .then((stocks) => console.log(stocks));
+  }, []);
+
+
   return (
     <Table celled style={{backgroundColor: "#f0ead6", textAlign: "center"}}>
     <Table.Header>
@@ -20,7 +30,7 @@ const Watchlist = () => {
       <Table.Row>
         <Table.Cell>
         <Icon name='delete'></Icon>
-          Ticker here
+          {results}
         </Table.Cell>
         <Table.Cell>Price here</Table.Cell>
         <Table.Cell>Change % from open</Table.Cell>

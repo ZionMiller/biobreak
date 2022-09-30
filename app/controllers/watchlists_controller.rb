@@ -2,6 +2,11 @@ class WatchlistsController < ApplicationController
 
     skip_before_action :authenticate, only: :create
 
+    def index
+        tickers = Watchlist.all
+        render json: tickers , status: :ok
+    end
+
   def show
     stock = Watchlist.find_by_id(session[:user_id])
     if stock

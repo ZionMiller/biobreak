@@ -16,8 +16,7 @@ const LoggedInFooter = () => {
         <Table.Body>
           <Table.Row>
             <Table.Cell>
-            {/* <img className="logo-img" style={{ size: "10px", padding: "0px" }} id="logo" src={require("../biobreak_icon.png")} alt="logo"/> */}
-            <h1>Icon loggo will go here</h1>
+              <img className="logo-img" style={{ fontSize: "5px", padding: "0px" }} id="logo" src={require("../biobreak_logo.png")} width="300" alt="logo"/>
             </Table.Cell>
             <Table.Cell>
               <h2>Policies</h2>            
@@ -62,8 +61,10 @@ const LoggedInFooter = () => {
               Please_don't_email_me@biobreak.com
             </Table.Cell>
           </Table.Row>
-        </Table.Body>
+          <Table.Cell>
+          </Table.Cell>
           <h3 style={{alignItems: "center"}}>developed by Zion Miller, will link Github here</h3><Icon name="github"/>
+        </Table.Body>
       </Table>
     </div>
   )

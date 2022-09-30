@@ -1,5 +1,7 @@
 import React from 'react'
 import { Menu, Input, Button, Form } from 'semantic-ui-react'
+import Chart from "./Chart";
+
 import { Link } from 'react-router-dom'
 
 const Snapshot = ({ query, setQuery, search, addWatchlist, setReturnedQuery}) => {
@@ -10,7 +12,6 @@ const Snapshot = ({ query, setQuery, search, addWatchlist, setReturnedQuery}) =>
     .then((r) => r.json())
     .then((returnedQuery) => setReturnedQuery(returnedQuery));
   }
-
 
   
   return (
@@ -41,7 +42,7 @@ const Snapshot = ({ query, setQuery, search, addWatchlist, setReturnedQuery}) =>
             <Link to='/snapshot/news'>News</Link>
         </Menu.Item>
         <Menu.Item>
-          <Link to='/snapshot/Ownership'>Ownership</Link>
+          <Link to='/snapshot/ownership'>Ownership</Link>
         </Menu.Item>
         <Menu.Item>
           <Link to='/snapshot/my-notes'>My Notes</Link>

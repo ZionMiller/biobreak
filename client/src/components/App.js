@@ -25,7 +25,7 @@ function App() {
   // const [searchQuery, setSearchQuery] = useState("")
   const [errors, setErrors] = useState([]);
 
-  const [formInput, setFormInput] = useState("")
+  const [watchlistButton, setwatchlistButton] = useState("")
   const [watchlists, setWatchlist] = useState([])
 
   const [query, setQuery] = useState("")
@@ -74,9 +74,9 @@ function App() {
   }
 
   // Post ticker instance to array
-  console.log("watchlists", watchlists)
+  // console.log("watchlists", watchlists)
 
-  console.log("input", formInput)
+  // console.log("input", watchlistButton)
 
     function addWatchlist(e) {
     e.preventDefault();
@@ -86,7 +86,7 @@ function App() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({tickers: formInput}),
+      body: JSON.stringify({tickers: query}),
     }).then((r) => {
       if (r.ok) {
         r.json().then((watchlists) => setWatchlist(watchlists));
@@ -112,16 +112,18 @@ function App() {
 
             <Route path='/snapshot' element={
               <Snapshot
+                query={query}
+                setQuery={setQuery}
                 setReturnedQuery={setReturnedQuery}
                 addWatchlist={addWatchlist}
-                setFormInput={setFormInput}
-                formInput={formInput}
+                setwatchlistButton={setwatchlistButton}
+                watchlistButton={watchlistButton}
                 />
             }>
 
                 <Route path='/snapshot/chart' element={
                   <Chart              
-
+                    query={query}
                   />
                 }/>
                 
@@ -171,7 +173,7 @@ function App() {
               <CatalystCalendar />
             }/>
 
-            <Route path='/watchlists' element={
+            <Route path='/watchlist' element={
               <Watchlist />
             }/>
 
