@@ -27,8 +27,25 @@ const News = ({ticker}) => {
     }
   ]
 
+  // rapid api test
+  // const settings = {
+  //   "async": true,
+  //   "crossDomain": true,
+  //   "url": "https://yahoo-finance97.p.rapidapi.com/institutional-holders",
+  //   "method": "POST",
+  //   "headers": {
+  //     "content-type": "application/x-www-form-urlencoded",
+  //     "X-RapidAPI-Key": "e0c7428433msh933632b9dbb669ap1051b5jsn6c05354c1ba1",
+  //     "X-RapidAPI-Host": "yahoo-finance97.p.rapidapi.com"
+  //   },
+  //   "data": {
+  //     "symbol": "grts"
+  //   }
+  // };
+
   return (
-    <div>
+    
+    <div>  
         <h2>News</h2>
         <Card.Group items={items}/>
     </div>

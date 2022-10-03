@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
 import {useParams} from 'react-router-dom'
 
 
@@ -64,25 +64,56 @@ const Signup = ({updateUser}) => {
         }
 
   return (
-    <div>
-        <h2>Sign Up</h2>
+    <Segment>
         {errors?errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null}
-        <form onSubmit={handleSubmit}>
-            <label >First Name:</label><br></br>
-                <input type="text" id="first_name" name="first_name" value ={formData.first_name}  onChange={handleChange}/><br></br>
-            <label >Last Name:</label><br></br>
-                <input type="text" id="last_name" name="last_name" value ={formData.last_name}  onChange={handleChange}/><br></br>
-            <label >Email:</label><br></br>
-                <input type="text" id="email" name="email" value ={formData.email}  onChange={handleChange}/><br></br>
-            <label >Zip Code:</label><br></br>
-                <input type="text" id="zipcode" name="zipcode" value ={formData.zipcode}  onChange={handleChange}/><br></br>
-            <label >Username:</label><br></br>
-                <input type="text" id="username" name="username" value ={formData.username}  onChange={handleChange}/><br></br>
-            <label>Password:</label><br></br>
-                <input type="password" id="password" name="password" value ={formData.password}  onChange={handleChange}/><br></br>
-                <input type="submit" value="Sign Up"/>
-        </form>
-    </div>
+        <Form onSubmit={handleSubmit} >
+            <Form.Input 
+                placholder="First Name"
+                type="text"
+                id="first_name"
+                name="first_name"
+                value ={formData.first_name}
+                onChange={handleChange}
+            />
+            <Form.Input
+                placholder="Last Name"
+                type="text" 
+                id="last_name" 
+                name="last_name" 
+                value ={formData.last_name}  
+                onChange={handleChange}
+            />
+            <Form.Input 
+                type="text" 
+                id="email" 
+                name="email" 
+                value ={formData.email}  
+                onChange={handleChange}
+            />
+            <Form.Input
+                type="text" 
+                id="zipcode" 
+                name="zipcode" 
+                value ={formData.zipcode}  
+                onChange={handleChange}
+             />
+            <Form.Input 
+                type="text" 
+                id="username" 
+                name="username" 
+                value ={formData.username}  
+                onChange={handleChange}
+            />
+            <Form.Input
+                type="password" 
+                id="password" 
+                name="password" 
+                value ={formData.password}  
+                onChange={handleChange}
+            />
+            <Button onSubmit={handleSubmit}>Signup</Button>
+        </Form>
+    </Segment>
   )
 }
 

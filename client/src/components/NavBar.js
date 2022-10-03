@@ -60,10 +60,7 @@ const NavBar = ({currentUser, handleDarkModeClick}) => {
                 <Link to='/About'>About</Link>
             </Menu.Item>
             <Menu.Item position='right'>
-                <Link to="/login">Log In</Link>
-            </Menu.Item>
-            <Menu.Item >
-                <Link to="/signup">Sign up</Link>
+                <Link to="/login">Log In / Signup</Link>
             </Menu.Item>
         </Menu>
         }

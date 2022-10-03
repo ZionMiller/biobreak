@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import { Button, Divider, Form, Grid, Label, Segment } from 'semantic-ui-react'
-import { Link, useParams } from 'react-router-dom'
+import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
+import { Link, useNavigate } from 'react-router-dom'
+import Signup from './Signup';
 
 
 const Login = ({updateUser}) => {
@@ -15,7 +16,7 @@ const Login = ({updateUser}) => {
         const [errors, setErrors] = useState([])
     
         //gives you access to the history instance that you may use to navigate.
-        const history = useParams()
+        const navigate = useNavigate()
     
         const handleSubmit = (e) => {
             e.preventDefault()
@@ -33,8 +34,8 @@ const Login = ({updateUser}) => {
           .then(res => {
             if(res.ok){
                 res.json().then(user => {
-                    updateUser(user)
-                    history.push(`/profile`)
+                    updateUser(user);
+                    navigate("/profile")
                 })
             }else {
                 res.json().then(json => setErrors(json.errors))
@@ -86,12 +87,8 @@ const Login = ({updateUser}) => {
             <Button onSubmit={handleSubmit}>Login</Button>
           </Form>
         </Grid.Column>
-
-        <Link to="/signup">Sign up</Link>
-
-        {/* <Button content='Sign up' icon='signup' size='medium' /> */}
+          <Signup />
         <Grid.Column verticalAlign='middle'>
-
       </Grid.Column>
     </Grid>
 

@@ -4,8 +4,9 @@ import {RadialChart} from 'react-vis';
 
 
 
-const Ownership = () => {
+const Ownership = ({ownershipQuery}) => {
   const myData = [{angle: 1}, {angle: 5}, {angle: 2}]
+  console.log(ownershipQuery)
   return (
     <div>
 

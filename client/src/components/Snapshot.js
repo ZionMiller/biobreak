@@ -4,14 +4,8 @@ import Chart from "./Chart";
 
 import { Link, Outlet } from 'react-router-dom'
 
-const Snapshot = ({ query, setQuery, search, addWatchlist, setReturnedQuery}) => {
+const Snapshot = ({ query, setQuery, addWatchlist, search}) => {
 
-
-  function search() {
-    fetch(`/search/${query}`)
-    .then((r) => r.json())
-    .then((returnedQuery) => setReturnedQuery(returnedQuery));
-  }
   
   return (
     <div>
@@ -27,12 +21,6 @@ const Snapshot = ({ query, setQuery, search, addWatchlist, setReturnedQuery}) =>
               <Button type='submit' onClick={search}>Submit</Button>
           </Form>
         </Menu.Menu>
-
-          {/* <Label as='a' content='Market Cap:' style={{width: "100px"}} color='blue'/>
-          <Label as='a' content='Cash:' style={{width: "100px"}} color='blue'/>
-          <Label as='a' content='Burn:' style={{width: "100px"}} color='blue'/>
-          <Label as='a' content='Debt:' style={{width: "100px"}} color='blue'/>
-        <Label as='a' content='Catalyst:' style={{width: "100px"}} color='blue'/> */}
 
         <Menu.Item position='right' name='Chart'>
           <Link to='/snapshot/chart'>Chart</Link>
@@ -63,6 +51,7 @@ const Snapshot = ({ query, setQuery, search, addWatchlist, setReturnedQuery}) =>
         </Button>
 
     </Menu>
+    {/* this enables sub menu */}
     <Outlet />
 
   </div>

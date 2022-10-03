@@ -29,8 +29,9 @@ function App() {
   const [watchlists, setWatchlist] = useState([])
 
   const [query, setQuery] = useState("")
-  const [returnedQuery, setReturnedQuery] = useState("")
+  const [returnedQuery, setReturnedQuery] = useState([])
 
+  // state for search to bio_stocks controller
   const navigate = useNavigate()
 
   // setTicker(ticker.toUpperCase())
@@ -49,6 +50,8 @@ function App() {
     .then((person) => setCurrentUser(person));
   }, []);
 
+  console.log(returnedQuery)
+
   // redirect user to home page after logging out etc
   // useEffect(() => {
   //   currentUser.length === 0 ? navigate("/login") : navigate("/profile") 
@@ -61,7 +64,14 @@ function App() {
       fetch('/logout', {
           method: "DELETE"
       })
-      updateUser("")
+      updateUser("");
+      navigate('/login')
+  }
+
+  function search() {
+    fetch(`/search/${query}`)
+    .then((r) => r.json())
+    .then((returnedQuery) => setReturnedQuery(returnedQuery));
   }
 
   function handleDarkModeClick() {
@@ -72,6 +82,26 @@ function App() {
     // this function will update state of query for all child components
 
   }
+
+
+// const encodedParams = new URLSearchParams();
+// encodedParams.append("symbol", `${query}`);
+    let ownershipQuery = ''
+// const ownershipQuery = {
+// 	method: 'POST',
+// 	headers: {
+// 		'content-type': 'application/x-www-form-urlencoded',
+// 		'X-RapidAPI-Key': 'X-RapidAPI-Key',
+// 		'X-RapidAPI-Host': 'yahoo-finance97.p.rapidapi.com'
+// 	},
+// 	body: encodedParams
+// };
+
+// fetch('https://yahoo-finance97.p.rapidapi.com/institutional-holders', ownershipQuery)
+// 	.then(response => response.json())
+// 	.then(response => console.log(response))
+// 	.catch(err => console.error(err));
+
 
   // Post ticker instance to array
   // console.log("watchlists", watchlists)
@@ -112,9 +142,9 @@ function App() {
 
             <Route path='snapshot' element={
               <Snapshot
+                search={search}
                 query={query}
                 setQuery={setQuery}
-                setReturnedQuery={setReturnedQuery}
                 addWatchlist={addWatchlist}
                 setwatchlistButton={setwatchlistButton}
                 watchlistButton={watchlistButton}
@@ -135,7 +165,8 @@ function App() {
                 }/>
 
                 <Route path='/snapshot/ownership' element={
-                  <Ownership     
+                  <Ownership 
+                  ownershipQuery={ownershipQuery}    
                   query={query}
                   setQuery={setQuery} 
                   />
@@ -163,15 +194,14 @@ function App() {
                 }/>
 
                 <Route path='/snapshot/pipeline' element={
-                  <Pipeline 
-                  query={query}
-                  setQuery={setQuery}
+                  // returnedQuery.map((returned) => (
+                    <Pipeline 
+                    returnedQuery={returnedQuery}
                     />
+                  // ))           
                 }/>
 
-            </Route>
-            
-        
+            </Route>       
 
             <Route path='/calendar' element={
               <CatalystCalendar />
