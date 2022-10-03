@@ -14,14 +14,14 @@ class StocksController < ApplicationController
   #         ])
   # end
 
-  def get_news_ownership
-    url = "https://yahoo-finance97.p.rapidapi.com/institutional-holders"
-    response = RestClient.get(url)
-  end
+#   def get_news_ownership
+#     url = "https://yahoo-finance97.p.rapidapi.com/institutional-holders"
+#     response = RestClient.get(url)
+#   end
 
-  def get_news
+#   def get_news
     
-  end
+#   end
 
   def create
     stock = Stock.create!(stocks_params)

@@ -32,12 +32,6 @@ const Pipeline = ({returnedQuery}) => {
             )
           })
         }
-            {/* <Table.Cell>{returned.drug}</Table.Cell>
-            <Table.Cell>{returned.indication}</Table.Cell>
-            <Table.Cell>{returned.stage}</Table.Cell>
-            <Table.Cell>Feature coming soon!</Table.Cell>
-            <Table.Cell>Feature coming soon!</Table.Cell>
-            <Table.Cell>Feature coming soon!</Table.Cell> */}
       </Table>
     </div>
   )
