@@ -51,14 +51,6 @@ function App() {
   }, []);
 
   console.log(returnedQuery)
-
-  // redirect user to home page after logging out etc
-  // useEffect(() => {
-  //   currentUser.length === 0 ? navigate("/login") : navigate("/profile") 
-  // }, [currentUser])
-
-  // const goToProfile = ( ) => useNavigate("/profile");
-  // const goToLogin = ( ) => useNavigate("/login");
   
   const handleLogOut = () => {
       fetch('/logout', {
@@ -77,36 +69,6 @@ function App() {
   function handleDarkModeClick() {
     setIsDarkMode((isDarkMode) => !isDarkMode);
   }
-
-  function name(params) {
-    // this function will update state of query for all child components
-
-  }
-
-
-// const encodedParams = new URLSearchParams();
-// encodedParams.append("symbol", `${query}`);
-    let ownershipQuery = ''
-// const ownershipQuery = {
-// 	method: 'POST',
-// 	headers: {
-// 		'content-type': 'application/x-www-form-urlencoded',
-// 		'X-RapidAPI-Key': 'X-RapidAPI-Key',
-// 		'X-RapidAPI-Host': 'yahoo-finance97.p.rapidapi.com'
-// 	},
-// 	body: encodedParams
-// };
-
-// fetch('https://yahoo-finance97.p.rapidapi.com/institutional-holders', ownershipQuery)
-// 	.then(response => response.json())
-// 	.then(response => console.log(response))
-// 	.catch(err => console.error(err));
-
-
-  // Post ticker instance to array
-  // console.log("watchlists", watchlists)
-
-  // console.log("input", watchlistButton)
 
     function addWatchlist(e) {
     e.preventDefault();
@@ -142,6 +104,7 @@ function App() {
 
             <Route path='snapshot' element={
               <Snapshot
+                returnedQuery={returnedQuery}
                 search={search}
                 query={query}
                 setQuery={setQuery}
@@ -158,7 +121,8 @@ function App() {
                 }/>
                 
                 <Route path='/snapshot/news' element={
-                  <News     
+                  <News  
+                  returnedQuery={returnedQuery}
                   query={query}
                   setQuery={setQuery}
                   />
@@ -166,7 +130,7 @@ function App() {
 
                 <Route path='/snapshot/ownership' element={
                   <Ownership 
-                  ownershipQuery={ownershipQuery}    
+                  returnedQuery={returnedQuery}
                   query={query}
                   setQuery={setQuery} 
                   />
@@ -174,6 +138,7 @@ function App() {
 
                 <Route path='/snapshot/my-notes' element={
                   <MyNotes 
+                  returnedQuery={returnedQuery}
                   query={query}
                   setQuery={setQuery}
                     />
@@ -181,6 +146,7 @@ function App() {
 
                 <Route path='/snapshot/cash' element={
                   <Cash 
+                  returnedQuery={returnedQuery}
                   query={query}
                   setQuery={setQuery}
                     />
@@ -188,17 +154,16 @@ function App() {
       
                 <Route path='/snapshot/expenses' element={
                   <Expenses 
+                    returnedQuery={returnedQuery}
                     query={query}
                     setQuery={setQuery}
                     />
                 }/>
 
                 <Route path='/snapshot/pipeline' element={
-                  // returnedQuery.map((returned) => (
                     <Pipeline 
-                    returnedQuery={returnedQuery}
+                      returnedQuery={returnedQuery}
                     />
-                  // ))           
                 }/>
 
             </Route>       

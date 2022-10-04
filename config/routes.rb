@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :watchlists
   # resources :bio_stocks, param: :symbol
-  resources :stocks
+  resources :stocks, only: [:update, :show, :index]
   resources :users
 
   post '/watchlist', to: 'watchlists#create'

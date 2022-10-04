@@ -1,10 +1,10 @@
 import React from 'react'
-import { Menu, Input, Button, Form } from 'semantic-ui-react'
+import { Menu, Label, Button, Form } from 'semantic-ui-react'
 import Chart from "./Chart";
 
 import { Link, Outlet } from 'react-router-dom'
 
-const Snapshot = ({ query, setQuery, addWatchlist, search}) => {
+const Snapshot = ({ query, setQuery, addWatchlist, search, returnedQuery}) => {
 
   
   return (
@@ -21,6 +21,8 @@ const Snapshot = ({ query, setQuery, addWatchlist, search}) => {
               <Button type='submit' onClick={search}>Submit</Button>
           </Form>
         </Menu.Menu>
+
+          {/* <h3 position='center'>Currently Viewing: {query}</h3> */}
 
         <Menu.Item position='right' name='Chart'>
           <Link to='/snapshot/chart'>Chart</Link>

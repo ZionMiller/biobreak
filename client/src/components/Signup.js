@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
 import {useParams} from 'react-router-dom'
-
+// add user agreement & other policies, only allow signup if checked
 
 const Signup = ({updateUser}) => {
 

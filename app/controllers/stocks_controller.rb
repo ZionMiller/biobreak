@@ -24,15 +24,24 @@ class StocksController < ApplicationController
 #   end
 
   def create
-    stock = Stock.create!(stocks_params)
+    stock = Stock.create!(my_notese)
     render json: stock, status: :created
     pp stocks_params
+  end
+
+  def update
+    @stocks.update(note_params)
+    render json: @stocks, status: :created
   end
 
   private
 
   def stocks_params
     params.permit(:ticker, :stock)
+  end
+
+  def note_params
+    params.permit(:my_notes)
   end
 
   # def stocks_news

@@ -64,6 +64,7 @@ const NavBar = ({currentUser, handleDarkModeClick}) => {
             </Menu.Item>
         </Menu>
         }
+        {/* Refactor this with protobuf to Youtube websockets link here: https://www.youtube.com/watch?v=flxxyHeBowI */}
         <Ticker widgetPropsAny={{"symbols": [
                                             {
                                             "description": "XBI",
