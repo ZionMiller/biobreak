@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import Snapshot from './Snapshot'
 import { Card } from 'semantic-ui-react'
 import NewsResults from './NewsResults'
-// import Rapid_API_Key from '../env'
+// import Rapid_API_Key from '..../.env'
+// /Users/zionmiller/Development/code/phase-5/biobreak/client/src/components/News.js
+// /Users/zionmiller/Development/code/phase-5/biobreak/.env
 // eventually update to divider 3 columns: 
     // 1; direct news to company
     // 2; articles etc containing mention 

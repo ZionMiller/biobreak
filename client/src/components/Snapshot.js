@@ -19,15 +19,14 @@ const Snapshot = ({ query, setQuery, addWatchlist, search, returnedQuery, watchl
           </Form>
         </Menu.Menu>
 
-        {/* if (returnedQuery.legnth === 0) {
+          
           <Label as='a' tag>
             search by ticker here
           </Label>
-        } else {
           <Label as='a' tag>
-            currently viewing {returnedQuery[0].ticker}
-          </Label>     
-        } */}
+            {/* currently viewing {returnedQuery[0].ticker} */}
+          </Label>  
+        
 
         <Menu.Item position='right' name='Chart'>
           <Link to='/snapshot/chart'>Chart</Link>
