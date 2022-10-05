@@ -66,9 +66,8 @@ const Login = ({updateUser}) => {
           justifyContent: 'center',
           height: '60vh',
         }}>
-        {errors? <div align-items='center'>{errors}</div>:null}
+        {errors? <div>{errors}</div>:null}
           <Form onSubmit={handleSubmit}>
-          {/* <label style={{textAlign: 'center'}}>First Name</label> */}
             <Form.Input
               icon='user'
               iconPosition='left'
