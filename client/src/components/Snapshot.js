@@ -20,12 +20,12 @@ const Snapshot = ({ query, setQuery, addWatchlist, search, returnedQuery, watchl
         </Menu.Menu>
 
           
-          <Label as='a' tag>
+          {/* <Label as='a' tag>
             search by ticker here
           </Label>
           <Label as='a' tag>
-            {/* currently viewing {returnedQuery[0].ticker} */}
-          </Label>  
+            {/* currently viewing {returnedQuery[0].ticker} 
+          </Label> */}
         
 
         <Menu.Item position='right' name='Chart'>
