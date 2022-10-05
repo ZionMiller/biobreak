@@ -58,7 +58,7 @@ const Login = ({updateUser}) => {
   return (
   
     <Segment placeholder>
-      <Grid columns={2} relaxed='very' stackable>
+      <Grid columns={2} relaxed='very' stackable >
         <Grid.Column       
         style={{
           display: 'flex',
@@ -93,8 +93,8 @@ const Login = ({updateUser}) => {
             <Button style={{backgroundColor: "#FFB52E"}} onSubmit={handleSubmit}>Login</Button>
           </Form>
         </Grid.Column>
-          <Signup position='center'/>
         <Grid.Column verticalAlign='middle'>
+          <Signup/>
       </Grid.Column>
     </Grid>
 
