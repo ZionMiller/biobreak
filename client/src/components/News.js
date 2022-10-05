@@ -13,40 +13,41 @@ const News = ({returnedQuery}) => {
   const [newsFetchState, setNewsFetchState] = useState(null)
   const [newsEncodedParams, setNewsEncodedParams] = useState(new URLSearchParams())
 
-    useEffect(() => {
-        if (returnedQuery.length != 0){
-            newsEncodedParams.set("symbol", `${returnedQuery[0].ticker}`);
-        }   
-    }, [returnedQuery])
+  const API_KEY = process.env.REACT_APP_X_RapidAPI_Key;
 
-  useEffect(() => {
-    setNewsFetchState(
-      {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/x-www-form-urlencoded',
-              // Come back and remove key, it's not working in env folder not sure why
-          'X-RapidAPI-Key': '',
-          'X-RapidAPI-Host': 'yahoo-finance97.p.rapidapi.com'
-        },
-        body: newsEncodedParams
-      }
-    )
-  }, [setNewsEncodedParams])
+  //   useEffect(() => {
+  //       if (returnedQuery.length != 0){
+  //           newsEncodedParams.set("symbol", `${returnedQuery[0].ticker}`);
+  //       }   
+  //   }, [returnedQuery])
+
+  // useEffect(() => {
+  //   setNewsFetchState(
+  //     {
+  //       method: 'POST',
+  //       headers: {
+  //         'content-type': 'application/x-www-form-urlencoded',
+  //             // Come back and remove key, it's not working in env folder not sure why
+  //         'X-RapidAPI-Key': '',
+  //         'X-RapidAPI-Host': 'yahoo-finance97.p.rapidapi.com'
+  //       },
+  //       body: newsEncodedParams
+  //     }
+  //   )
+  // }, [setNewsEncodedParams])
     
-      useEffect(() => {
-        if (newsEncodedParams.get("symbol") && newsFetchState !== null){
-        fetch('https://yahoo-finance97.p.rapidapi.com/news', newsFetchState)
-          .then(response => response.json())
-          .then(articles => setNews(articles))
-          .catch(err => console.error(err));
-          }
-        }, [newsFetchState, newsEncodedParams]); 
+  //     useEffect(() => {
+  //       if (newsEncodedParams.get("symbol") && newsFetchState !== null){
+  //       fetch('https://yahoo-finance97.p.rapidapi.com/news', newsFetchState)
+  //         .then(response => response.json())
+  //         .then(articles => setNews(articles))
+  //         .catch(err => console.error(err));
+  //         }
+  //       }, [newsFetchState, newsEncodedParams]); 
       
     console.log(newsArticles)
 
-    // console.log(newsEncodedParams)
-
+    console.log(API_KEY)
   return (
     <div>  
       <Card.Group itemsPerRow={6}>

@@ -77,8 +77,9 @@ function App() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Accept": "application/json"
       },
-      body: JSON.stringify({tickers: query}),
+      body: JSON.stringify( {tickers: [`${returnedQuery[0].ticker}`] } ),
     }).then((r) => {
       if (r.ok) {
         r.json().then((watchlists) => setWatchlist(watchlists));

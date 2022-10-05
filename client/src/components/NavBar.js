@@ -13,7 +13,7 @@ const NavBar = ({currentUser, handleDarkModeClick}) => {
                 <img className="logo-img" style={{ fontSize: "100px", padding: "0px" }} id="logo" src={require("../biobreak_logo.png")} alt="logo"/>
             </Menu.Item>
             <Menu.Item>
-                <TickerTape style={{ padding: "0px" }} widgetPropsAny={{  "symbols": [
+                <TickerTape style={{ padding: "0px", width: "100" }} widgetPropsAny={{  "symbols": [
                                         {
                                             "description": "DOW",
                                             "proName": "NYSE:DOW"

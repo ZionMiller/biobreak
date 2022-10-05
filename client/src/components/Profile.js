@@ -7,10 +7,18 @@ const Profile = ({handleLogOut, currentUser}) => {
   return (
     <Segment textAlign='center'>
     <Grid columns={2} >
-      <Grid.Column>
+      <Grid.Column style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
         <MarketOverview widgetPropsAny={{"colorTheme": "light", "isTransparent": true}} />
       </Grid.Column>
-      <Grid.Column >
+      <Grid.Column style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
         <Card.Group>
           <Card>
             <Card.Content>

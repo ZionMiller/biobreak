@@ -64,19 +64,31 @@ const Signup = ({updateUser}) => {
         }
 
   return (
-    <Segment>
+    <Segment placeholder>
+        <Grid relaxed='very' stackable>
+        <Grid.Column style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '60vh',
+        }}>
         {errors?errors.map(e => <div>{e[0]+': ' + e[1]}</div>):null}
-        <Form onSubmit={handleSubmit} >
+        {/* {errors? <div align-items='center'>{errors}</div>:null} */}
+        <Form onSubmit={handleSubmit}>
             <Form.Input 
-                placholder="First Name"
-                type="text"
-                id="first_name"
-                name="first_name"
+                icon='user'
+                iconPosition='left'
+                placeholder='First Name'
+                type="text" 
+                id="first_name" 
+                name="first_name" 
                 value ={formData.first_name}
                 onChange={handleChange}
             />
             <Form.Input
-                placholder="Last Name"
+                icon='user'
+                iconPosition='left'
+                placeholder='Last Name'
                 type="text" 
                 id="last_name" 
                 name="last_name" 
@@ -84,6 +96,9 @@ const Signup = ({updateUser}) => {
                 onChange={handleChange}
             />
             <Form.Input 
+                icon='mail'
+                iconPosition='left'
+                placeholder='Email'
                 type="text" 
                 id="email" 
                 name="email" 
@@ -91,6 +106,9 @@ const Signup = ({updateUser}) => {
                 onChange={handleChange}
             />
             <Form.Input
+                icon='location arrow'
+                iconPosition='left'
+                placeholder='Zipcode'
                 type="text" 
                 id="zipcode" 
                 name="zipcode" 
@@ -98,6 +116,9 @@ const Signup = ({updateUser}) => {
                 onChange={handleChange}
              />
             <Form.Input 
+                icon='user'
+                iconPosition='left'
+                placeholder='Username'
                 type="text" 
                 id="username" 
                 name="username" 
@@ -105,14 +126,19 @@ const Signup = ({updateUser}) => {
                 onChange={handleChange}
             />
             <Form.Input
+                icon='lock'
+                iconPosition='left'
+                placeholder='password'
                 type="password" 
                 id="password" 
                 name="password" 
                 value ={formData.password}  
                 onChange={handleChange}
             />
-            <Button onSubmit={handleSubmit}>Signup</Button>
+            <Button style={{backgroundColor: "#FFB52E"}} onSubmit={handleSubmit}>Signup</Button>
         </Form>
+        </Grid.Column >
+        </Grid>
     </Segment>
   )
 }

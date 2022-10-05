@@ -5,7 +5,7 @@ class StocksController < ApplicationController
   # REPORTED_FINANCIALS/#{some_variable}/10-Q
 
   # def get_cash_and_expenses
-  #     url = "https://cloud.iexapis.com/stable/time-series/REPORTED_FINANCIALS/#{@searched_symbol}/10-Q?last=2&token=API_KEY_SECRET"
+  #     url = "https://cloud.iexapis.com/stable/time-series/REPORTED_FINANCIALS/#{search}/10-Q?last=2&token=API_KEY_SECRET"
   #     response = RestClient.get(url)
   #     r = JSON.parse(response)
   #     render json: r(only: [
@@ -44,10 +44,5 @@ class StocksController < ApplicationController
     params.permit(:my_notes)
   end
 
-  # def stocks_news
-  #     locater = "https://cloud.iexapis.com/v1/stock/aapl/batch?types=quote,news,chart&range=1m&last=10&token=API_KEY_SECRET"
-  # response = RestClient.get(locater)
-  # r = JSON.parse(response)
-  # render json: response
-  # end
+
 end

@@ -5,11 +5,13 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
 
-  private
+  def search
+    term = params[:symbol]
+    @results = BioStock.where("ticker LIKE ?", "%#{term.upcase}%")
+    render json: @results, status: :ok    
+  end
 
-  # def searched_symbol
-  #     @searched_symbol ||= Stock.find_by_TradingSymbol(session[:TradingSymbol])
-  # end
+  private
 
   def unprocessable_entity_response(exception)
     render json: { errrors: exception.record.errors }, status: :unprocessable_entity

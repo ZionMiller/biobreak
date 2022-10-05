@@ -59,9 +59,15 @@ const Login = ({updateUser}) => {
   
     <Segment placeholder>
       <Grid columns={2} relaxed='very' stackable>
-        <Grid.Column onSubmit={handleSubmit}>
+        <Grid.Column       
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '60vh',
+        }}>
         {errors? <div align-items='center'>{errors}</div>:null}
-          <Form>
+          <Form onSubmit={handleSubmit}>
           {/* <label style={{textAlign: 'center'}}>First Name</label> */}
             <Form.Input
               icon='user'
@@ -84,10 +90,10 @@ const Login = ({updateUser}) => {
               value ={formData.password}  
               onChange={handleChange}
             />
-            <Button onSubmit={handleSubmit}>Login</Button>
+            <Button style={{backgroundColor: "#FFB52E"}} onSubmit={handleSubmit}>Login</Button>
           </Form>
         </Grid.Column>
-          <Signup />
+          <Signup position='center'/>
         <Grid.Column verticalAlign='middle'>
       </Grid.Column>
     </Grid>

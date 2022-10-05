@@ -18,7 +18,7 @@ const Snapshot = ({ query, setQuery, addWatchlist, search, returnedQuery}) => {
               value={query}
               onChange={((e) => setQuery(e.target.value))}
               />
-              <Button type='submit' onClick={search}>Submit</Button>
+              <Button style={{backgroundColor: "#29b6f6"}} type='submit' onClick={search}>Submit</Button>
           </Form>
         </Menu.Menu>
 

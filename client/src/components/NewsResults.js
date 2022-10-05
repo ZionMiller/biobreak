@@ -10,7 +10,7 @@ const NewsResults = ({title, link, publisher, providerPublishTime}) => {
         <p><strong></strong>{publisher}</p>
         <p><strong></strong>{new Date(providerPublishTime).toString()}</p>
         {/* <p><strong></strong>{link}</p> */}
-        <a href={link} target="_blank"><Button>View Article</Button></a>
+        <a href={link} target="_blank"><Button style={{backgroundColor: "#0E6EB8"}}>View Article</Button></a>
     </Card.Content>
   </Card>
   )
