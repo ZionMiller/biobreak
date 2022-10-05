@@ -19,17 +19,16 @@ import Pipeline from "./Pipeline";
 import LoggedInFooter from "./LoggedInFooter";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState([])
+  const [currentUser, setCurrentUser] = useState(null)
   const updateUser = (user) => setCurrentUser(user)
   const [isDarkMode, setIsDarkMode] = useState(false);
   // const [searchQuery, setSearchQuery] = useState("")
   const [errors, setErrors] = useState([]);
-
-  const [watchlistButton, setwatchlistButton] = useState("")
   const [watchlists, setWatchlist] = useState([])
 
   const [query, setQuery] = useState("")
   const [returnedQuery, setReturnedQuery] = useState([])
+  const [cashAndExp, setCashAndExp] = useState([])
 
   // state for search to bio_stocks controller
   const navigate = useNavigate()
@@ -49,6 +48,12 @@ function App() {
     .then((r) => r.json())
     .then((person) => setCurrentUser(person));
   }, []);
+
+  // useEffect(() => {
+  //   fetch("/stocks")
+  //   .then((r) => r.json())
+  //   .then((stonks) => setCashAndExp(stonks));
+  // }, []);
 
   console.log(returnedQuery)
   
@@ -79,10 +84,11 @@ function App() {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify( {tickers: [`${returnedQuery[0].ticker}`] } ),
+      // body: JSON.stringify( {tickers: [`${returnedQuery[0].ticker}`] } ),
+      body: JSON.stringify( {tickers: `${returnedQuery[0].ticker}` } ),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((watchlists) => setWatchlist(watchlists));
+        r.json().then((symbols) => setWatchlist(symbols));
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -105,13 +111,13 @@ function App() {
 
             <Route path='snapshot' element={
               <Snapshot
+                currentUser={currentUser}
                 returnedQuery={returnedQuery}
                 search={search}
                 query={query}
                 setQuery={setQuery}
                 addWatchlist={addWatchlist}
-                setwatchlistButton={setwatchlistButton}
-                watchlistButton={watchlistButton}
+                watchlist={watchlists}
                 />
             }>
 
@@ -174,7 +180,7 @@ function App() {
             }/>
 
             <Route path='/watchlist' element={
-              <Watchlist />
+              <Watchlist currentUser={currentUser}/>
             }/>
 
             <Route path='/resources' element={

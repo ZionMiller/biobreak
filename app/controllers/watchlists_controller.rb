@@ -14,11 +14,11 @@ class WatchlistsController < ApplicationController
 
   def create 
         watchlist ||= Watchlist.create!(user_id: session[:user_id])
-        if BioStock.find_by(ticker: watchlist_params.tickers.upcase)
-          pp watchlist_params
-            update_watchlist = Watchlist.tickers
-            update_watchlist.push(watchlist_params)
-            watchlist.update!(tickers: update_watchlist)
+        # debugger
+        if BioStock.find_by(ticker: params[:tickers].upcase)
+            watchlist.tickers.push(watchlist_params[:tickers])
+            # update_watchlist.push(watchlist_params[:tickers])
+            watchlist.save
             render json: watchlist, status: :created
         else
             render json: { error: 'Symbol doesn\'t exist' }, status: 404

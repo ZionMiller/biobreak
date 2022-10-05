@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  # get '/stocks', to: "stocks#get_stocks"
+  get '/stocks', to: "stocks#get_cash_and_expenses"
 
   # get '*path',
   #     to: 'fallback#index',

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Snapshot from './Snapshot'
 import { Card } from 'semantic-ui-react'
 import NewsResults from './NewsResults'
+// import Rapid_API_Key from '../env'
 // eventually update to divider 3 columns: 
     // 1; direct news to company
     // 2; articles etc containing mention 
@@ -12,8 +13,6 @@ const News = ({returnedQuery}) => {
   const [newsArticles, setNews] = useState(null)
   const [newsFetchState, setNewsFetchState] = useState(null)
   const [newsEncodedParams, setNewsEncodedParams] = useState(new URLSearchParams())
-
-  const API_KEY = process.env.REACT_APP_X_RapidAPI_Key;
 
   //   useEffect(() => {
   //       if (returnedQuery.length != 0){
@@ -28,7 +27,7 @@ const News = ({returnedQuery}) => {
   //       headers: {
   //         'content-type': 'application/x-www-form-urlencoded',
   //             // Come back and remove key, it's not working in env folder not sure why
-  //         'X-RapidAPI-Key': '',
+  //         'X-RapidAPI-Key': Rapid_API_Key,
   //         'X-RapidAPI-Host': 'yahoo-finance97.p.rapidapi.com'
   //       },
   //       body: newsEncodedParams
@@ -46,8 +45,6 @@ const News = ({returnedQuery}) => {
   //       }, [newsFetchState, newsEncodedParams]); 
       
     console.log(newsArticles)
-
-    console.log(API_KEY)
   return (
     <div>  
       <Card.Group itemsPerRow={6}>
