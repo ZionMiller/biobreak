@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useParams } from "react-router-dom";
 import NavBar from "./NavBar"
 import Snapshot from "./Snapshot"
 import CatalystCalendar from "./CatalystCalendar"
@@ -28,34 +28,50 @@ function App() {
 
   const [query, setQuery] = useState("")
   const [returnedQuery, setReturnedQuery] = useState([])
-  const [cashAndExp, setCashAndExp] = useState([])
+  const [cashAndExpenses, setCashAndExpenses] = useState([])
 
   // state for search to bio_stocks controller
   const navigate = useNavigate()
+  const params = useParams()
 
   // setTicker(ticker.toUpperCase())
 
-  useEffect(() => {
-    fetch("/watchlists")
-    .then((r) => r.json())
-    .then((watchlists) => setWatchlist(watchlists));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/watchlists")
+  //   .then((r) => r.json())
+  //   .then((watchlists) => setWatchlist(watchlists));
+  // }, []);
 
-  console.log(query)
+  console.log("query", query)
+
+  // useEffect(() => {
+  //   fetch("/me")
+  //   .then((r) => r.json())
+  //   .then((person) => setCurrentUser(person));
+  // }, []);
 
   useEffect(() => {
     fetch("/me")
     .then((r) => r.json())
     .then((person) => setCurrentUser(person));
-  }, []);
 
-  // useEffect(() => {
-  //   fetch("/stocks")
-  //   .then((r) => r.json())
-  //   .then((stonks) => setCashAndExp(stonks));
-  // }, []);
+    fetch("/watchlists")
+    .then((r) => r.json())
+    .then((watchlists) => setWatchlist(watchlists));
 
-  console.log(returnedQuery)
+    switch(useParams) {
+      case 'stocks':
+      default:
+    }
+  }, [])
+
+  function onCashExClick() {
+    fetch("/stocks")
+    .then((r) => r.json())
+    .then((stonks) => setCashAndExpenses(stonks));
+  }
+
+  console.log("returned Query", returnedQuery)
   
   const handleLogOut = () => {
       fetch('/logout', {
@@ -111,6 +127,7 @@ function App() {
 
             <Route path='snapshot' element={
               <Snapshot
+              onCashExClick={onCashExClick}
                 currentUser={currentUser}
                 returnedQuery={returnedQuery}
                 search={search}
@@ -120,7 +137,6 @@ function App() {
                 watchlist={watchlists}
                 />
             }>
-
                 <Route path='chart' element={
                   <Chart              
                     query={query}
@@ -153,6 +169,7 @@ function App() {
 
                 <Route path='/snapshot/cash' element={
                   <Cash 
+                  onCashExClick={onCashExClick}
                   returnedQuery={returnedQuery}
                   query={query}
                   setQuery={setQuery}

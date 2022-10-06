@@ -17,7 +17,6 @@ class WatchlistsController < ApplicationController
         # debugger
         if BioStock.find_by(ticker: params[:tickers].upcase)
             watchlist.tickers.push(watchlist_params[:tickers])
-            # update_watchlist.push(watchlist_params[:tickers])
             watchlist.save
             render json: watchlist, status: :created
         else

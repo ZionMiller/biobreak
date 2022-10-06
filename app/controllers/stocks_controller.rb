@@ -3,9 +3,10 @@ class StocksController < ApplicationController
 
   # need to change REPORTED_FINANCIALS/GRTS/10-Q to dynamic from client request
   # REPORTED_FINANCIALS/#{some_variable}/10-Q
-
+  
   def get_cash_and_expenses
-      url = "https://cloud.iexapis.com/stable/time-series/REPORTED_FINANCIALS/#{search}/10-Q?last=2&token=API_KEY_SECRET"
+    url = "https://cloud.iexapis.com/stable/time-series/REPORTED_FINANCIALS/#{ApplicationController.results[0].ticker}/10-Q?last=2&token=API_KEY_SECRET"
+    pp ApplicationController.results
       response = RestClient.get(url)
       r = JSON.parse(response)
       render json: r(only: [
@@ -13,15 +14,6 @@ class StocksController < ApplicationController
           :ResearchAndDevelopmentExpense, :GeneralAndAdministrativeExpense, :NetIncomeLoss, :OperatingExpenses, :CommonStockSharesOutstanding
           ])
   end
-
-#   def get_news_ownership
-#     url = "https://yahoo-finance97.p.rapidapi.com/institutional-holders"
-#     response = RestClient.get(url)
-#   end
-
-#   def get_news
-    
-#   end
 
   def create
     stock = Stock.create!(my_notese)
