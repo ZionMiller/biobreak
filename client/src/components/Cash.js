@@ -11,30 +11,30 @@ import {
 import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
+  // CategoryScale,
+  // LinearScale,
+  // BarElement,
+  // Title,
+  // Tooltip,
+  // Legend
 );
 
 export const options = {
   plugins: {
     title: {
       display: true,
-      text: 'Chart.js Bar Chart - Stacked',
+      text: 'Cash',
     },
   },
-  responsive: true,
-  scales: {
-    x: {
-      stacked: true,
-    },
-    y: {
-      stacked: true,
-    },
-  },
+  // responsive: true,
+  // scales: {
+  //   x: {
+  //     stacked: true,
+  //   },
+  //   y: {
+  //     stacked: true,
+  //   },
+  // },
 };
 
 const labels = ['Q1', 'Q2', 'Q3', 'Q4'];
@@ -44,17 +44,17 @@ const data = {
   datasets: [
     {
       label: 'Total Assets',
-      data: 100,
+      // data: 100,
       backgroundColor: '#45f248',
     },
     {
       label: 'Cash & Equivelants',
-      data: 300,
+      // data: 300,
       backgroundColor: '#2db83d',
     },
     {
       label: 'Revenue',
-      data: 186,
+      // data: 186,
       backgroundColor: '#4cd038',
     },
   ],

@@ -4,9 +4,16 @@ class StocksController < ApplicationController
   # need to change REPORTED_FINANCIALS/GRTS/10-Q to dynamic from client request
   # REPORTED_FINANCIALS/#{some_variable}/10-Q
   
+  def search
+    term = params[:symbol]
+    @results = BioStock.where("ticker LIKE ?", "%#{term.upcase}%")
+    render json: @results, status: :ok    
+  end
+
   def get_cash_and_expenses
-    url = "https://cloud.iexapis.com/stable/time-series/REPORTED_FINANCIALS/#{ApplicationController.results[0].ticker}/10-Q?last=2&token=API_KEY_SECRET"
-    pp ApplicationController.results
+    puts @results
+    url = "https://cloud.iexapis.com/stable/time-series/REPORTED_FINANCIALS/#{@results[0].ticker}/10-Q?last=2&token=API_KEY_SECRET"
+    debugger
       response = RestClient.get(url)
       r = JSON.parse(response)
       render json: r(only: [
