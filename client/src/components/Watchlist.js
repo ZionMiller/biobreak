@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Icon, Table, Button } from 'semantic-ui-react'
+import { SingleTicker } from "react-tradingview-embed";
 
 const Watchlist = ({currentUser}) => {
 
-  let watchlistArr = console.log(currentUser)
+  let watchlistArr = currentUser.watchlists[0].tickers
+  console.log(watchlistArr)
 
   return (
     <Table celled style={{backgroundColor: "#f0ead6", textAlign: "center"}}>
@@ -24,10 +26,18 @@ const Watchlist = ({currentUser}) => {
         <Table.Body>
           <Table.Row>
             <Table.Cell>
-            <Icon name='delete'></Icon>
+              <Icon name='delete'></Icon>
+              {watchlistArr}
+              {/* {watchlist.ticker} */}
             </Table.Cell>
-            <Table.Cell>Price here</Table.Cell>
-            <Table.Cell>Change % from open</Table.Cell>
+            <Table.Cell>
+              {/* <SingleTicker widgetPropsAny={{ 
+                                    "symbol": "FX:EURUSD",
+                                    "colorTheme": "light",
+                                    "isTransparent": false,
+                                    "locale": "en"
+                                  }} /> */}
+            </Table.Cell>
             <Table.Cell>Cash</Table.Cell>
             <Table.Cell>Burn</Table.Cell>
             <Table.Cell>Catalyst</Table.Cell>

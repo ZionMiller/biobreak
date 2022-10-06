@@ -2,8 +2,14 @@ import React, { useState } from 'react'
 import { Menu, Label, Button, Form } from 'semantic-ui-react'
 import { Link, Outlet } from 'react-router-dom'
 
-const Snapshot = ({ query, setQuery, addWatchlist, search, returnedQuery, watchlist, currentUser}) => {
+const Snapshot = ({ onCashExClick, query, setQuery, addWatchlist, search, returnedQuery, watchlist, currentUser}) => {
   
+  const handleCashAndSearch = () => {
+    search()
+    onCashExClick()
+  }
+
+
   return (
     <div>
       <Menu pointing>
@@ -15,18 +21,29 @@ const Snapshot = ({ query, setQuery, addWatchlist, search, returnedQuery, watchl
               value={query}
               onChange={((e) => setQuery(e.target.value))}
               />
-              <Button style={{backgroundColor: "#29b6f6"}} type='submit' onClick={search}>Search</Button>
+              <Button style={{backgroundColor: "#FFB52E"}} type='submit' onClick={handleCashAndSearch}>Search</Button>
           </Form>
         </Menu.Menu>
 
-          
-          <Label as='a' tag>
+        {returnedQuery.length == 0 ? 
+          <Label as='a' tag style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: "#FFB52E",
+          }}>
             search by ticker here
           </Label>
-          <Label as='a' tag>
-            {/* currently viewing {returnedQuery[0].ticker} */}
-          </Label>  
-        
+          :         
+          <Label as='a' tag style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: "#29b6f6",
+          }}>
+            currently viewing {returnedQuery[0].ticker} 
+          </Label>
+        }          
 
         <Menu.Item position='right' name='Chart'>
           <Link to='/snapshot/chart'>Chart</Link>
@@ -61,7 +78,11 @@ const Snapshot = ({ query, setQuery, addWatchlist, search, returnedQuery, watchl
           </Button>
         } */}
 
-        {console.log(currentUser)}
+        {/* {console.log(currentUser.watchlists.includes(returnedQuery.map((returned) => {
+          returned.ticker
+        })))} */}
+
+    
         <Button style={{backgroundColor: "#FFB52E"}} onClick={addWatchlist}>
             {query ? `Add to ${query.toUpperCase()} Watchlist` : "Add to Watchlist"}
         </Button>

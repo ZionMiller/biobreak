@@ -13,22 +13,26 @@ const NavBar = ({currentUser, handleDarkModeClick}) => {
                 <img className="logo-img" style={{ fontSize: "100px", padding: "0px" }} id="logo" src={require("../biobreak_logo.png")} alt="logo"/>
             </Menu.Item>
             <Menu.Item>
-                <TickerTape style={{ padding: "0px", width: "100" }} widgetPropsAny={{  "symbols": [
-                                        {
+                <Ticker widgetPropsAny={{  "symbols": [
+                                            {
                                             "description": "DOW",
                                             "proName": "NYSE:DOW"
-                                            },
+                                            }                                   
+                                        ], "colorTheme": "light", "isTransparent": true, "autosize": true}} />
+                <Ticker widgetPropsAny={{  "symbols": [
                                             {
                                             "description": "NASDAQ",
                                             "proName": "NASDAQ:NDAQ"
-                                            },
-                                            {
-                                            "description": "S&P",
-                                            "proName": "AMEX:SPY"
-                                            }
+                                            },                                  
                                         ], "colorTheme": "light", "isTransparent": true, "autosize": true}} />
+                <Ticker widgetPropsAny={{  "symbols": [
+                                            {
+                                            "description": "",
+                                            "proName": "AMEX:SPY"
+                                            }                                 
+                                        ], "colorTheme": "light", "isTransparent": true, "autosize": true}} />                 
             </Menu.Item>
-            <Menu.Item position='right'>
+            <Menu.Item >
                 <Link to='/snapshot'>Snapshot</Link>
             </Menu.Item>
             <Menu.Item>
