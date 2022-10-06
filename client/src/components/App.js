@@ -34,21 +34,7 @@ function App() {
   const navigate = useNavigate()
   const params = useParams()
 
-  // setTicker(ticker.toUpperCase())
-
-  // useEffect(() => {
-  //   fetch("/watchlists")
-  //   .then((r) => r.json())
-  //   .then((watchlists) => setWatchlist(watchlists));
-  // }, []);
-
   console.log("query", query)
-
-  // useEffect(() => {
-  //   fetch("/me")
-  //   .then((r) => r.json())
-  //   .then((person) => setCurrentUser(person));
-  // }, []);
 
   useEffect(() => {
     fetch("/me")
@@ -65,6 +51,12 @@ function App() {
     }
   }, [])
 
+  function search() {
+    fetch(`/search/${query}`)
+    .then((r) => r.json())
+    .then((returnedQuery) => setReturnedQuery(returnedQuery));
+  }
+
   function onCashExClick() {
     fetch("/stocks")
     .then((r) => r.json())
@@ -79,12 +71,6 @@ function App() {
       })
       updateUser("");
       navigate('/login')
-  }
-
-  function search() {
-    fetch(`/search/${query}`)
-    .then((r) => r.json())
-    .then((returnedQuery) => setReturnedQuery(returnedQuery));
   }
 
   function handleDarkModeClick() {
@@ -118,13 +104,10 @@ function App() {
           updateUser={updateUser} 
           handleDarkModeClick={handleDarkModeClick}
         />
-
         <Routes>
-
             <Route path='/about' element={
               <About />
             }/>
-
             <Route path='snapshot' element={
               <Snapshot
               onCashExClick={onCashExClick}
@@ -141,8 +124,7 @@ function App() {
                   <Chart              
                     query={query}
                   />
-                }/>
-                
+                }/>      
                 <Route path='/snapshot/news' element={
                   <News  
                   returnedQuery={returnedQuery}
@@ -150,7 +132,6 @@ function App() {
                   setQuery={setQuery}
                   />
                 }/>
-
                 <Route path='/snapshot/ownership' element={
                   <Ownership 
                   returnedQuery={returnedQuery}
@@ -158,7 +139,6 @@ function App() {
                   setQuery={setQuery} 
                   />
                 }/>
-
                 <Route path='/snapshot/my-notes' element={
                   <MyNotes 
                   returnedQuery={returnedQuery}
@@ -166,7 +146,6 @@ function App() {
                   setQuery={setQuery}
                     />
                 }/>
-
                 <Route path='/snapshot/cash' element={
                   <Cash 
                   onCashExClick={onCashExClick}
@@ -174,8 +153,7 @@ function App() {
                   query={query}
                   setQuery={setQuery}
                     />
-                }/>
-      
+                }/>    
                 <Route path='/snapshot/expenses' element={
                   <Expenses 
                     returnedQuery={returnedQuery}
@@ -183,39 +161,30 @@ function App() {
                     setQuery={setQuery}
                     />
                 }/>
-
                 <Route path='/snapshot/pipeline' element={
                     <Pipeline 
                       returnedQuery={returnedQuery}
                     />
                 }/>
-
             </Route>       
-
             <Route path='/calendar' element={
               <CatalystCalendar />
             }/>
-
             <Route path='/watchlist' element={
               <Watchlist currentUser={currentUser}/>
             }/>
-
             <Route path='/resources' element={
               <Resources />
             }/>
-
             <Route path='/profile' element={
               <Profile handleLogOut={handleLogOut} currentUser={currentUser}/>
             }/>
-
             <Route path='/login' element={
               <Login updateUser={updateUser}/>
             }/>
-
             <Route path='/signup' element={
               <Signup updateUser={updateUser}/>
-            }/>
-          
+            }/>         
             </Routes>
             <LoggedInFooter />
         </div>

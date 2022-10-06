@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
-import {useParams} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 // add user agreement & other policies, only allow signup if checked
 
 const Signup = ({updateUser}) => {
@@ -19,8 +19,8 @@ const Signup = ({updateUser}) => {
         const [errors, setErrors] = useState([])
     
         //gives you access to the history instance that you may use to navigate.
-        const history = useParams()
-    
+        const navigate = useNavigate()
+
         const handleSubmit = (e) => {
             e.preventDefault()
             setFormData(formData);
@@ -39,7 +39,7 @@ const Signup = ({updateUser}) => {
             if(res.ok){
                 res.json().then(user => {
                     updateUser(user)
-                    history.push(`/profile`)
+                    navigate(`/profile`)
                 })
             }else {
                 res.json().then(json => setErrors(Object.entries(json.errors)))

@@ -38,11 +38,9 @@ const Profile = ({handleLogOut, currentUser}) => {
             </div>
           </Card.Content>
         </Card>
-  
         </Card.Group>
       </Grid.Column>
     </Grid>
-
     <Divider vertical></Divider>
   </Segment>
   )

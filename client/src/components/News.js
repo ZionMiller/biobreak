@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Snapshot from './Snapshot'
 import { Card } from 'semantic-ui-react'
 import NewsResults from './NewsResults'
-// import Rapid_API_Key from '/.env'
-// /Users/zionmiller/Development/code/phase-5/biobreak/client/src/components/News.js
-// /Users/zionmiller/Development/code/phase-5/biobreak/.env
-// eventually update to divider 3 columns: 
+
+// Divider 3 columns: 
     // 1; direct news to company
     // 2; articles etc containing mention 
     // 3: tweets containing ticker or drug
@@ -29,7 +27,8 @@ const News = ({returnedQuery}) => {
         headers: {
           'content-type': 'application/x-www-form-urlencoded',
               // Come back and remove key, it's not working in env folder not sure why
-          'X-RapidAPI-Key': "",
+              // process.env.REACT_APP_Rapid_API_Key
+          'X-RapidAPI-Key': '',
           'X-RapidAPI-Host': 'yahoo-finance97.p.rapidapi.com'
         },
         body: newsEncodedParams

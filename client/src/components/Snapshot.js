@@ -9,7 +9,6 @@ const Snapshot = ({ onCashExClick, query, setQuery, addWatchlist, search, return
     onCashExClick()
   }
 
-
   return (
     <div>
       <Menu pointing>
