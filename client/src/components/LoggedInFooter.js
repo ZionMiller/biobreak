@@ -6,10 +6,11 @@ const LoggedInFooter = () => {
   return (
     <div style=
         {{
-        position: "fixed",
-        bottom: "0",
-        width: "100%",
-        height: "100px",
+          bottom: "0",
+          left: "0",
+          position: "relative", //changed to relative from fixed also works if position is not there
+          marginTop: "25px",
+          width: "100%",
         }}>
             
         <Table  style={{backgroundColor: "#f0ead6", textAlign: "center"}}>

@@ -98,6 +98,7 @@ function App() {
    }    
 
   return (
+    <>
       <div>
         <NavBar 
           currentUser={currentUser} 
@@ -186,8 +187,10 @@ function App() {
               <Signup updateUser={updateUser}/>
             }/>         
             </Routes>
-            <LoggedInFooter />
+            
         </div>
+        <LoggedInFooter />
+      </>
   );
 }
 

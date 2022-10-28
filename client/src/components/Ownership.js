@@ -9,35 +9,35 @@ const Ownership = ({returnedQuery}) => {
   const [ownershipEncodedParams, setOwnershipEncodedParams] = useState(new URLSearchParams())
   const [ownershipArr, setOwnershipArr] = useState(null)
 
-  //     useEffect(() => {
-  //       if (returnedQuery.length != 0){
-  //           ownershipEncodedParams.set("symbol", `${returnedQuery[0].ticker}`);
-  //       }
-  //     }, [returnedQuery])
+      useEffect(() => {
+        if (returnedQuery.length != 0){
+            ownershipEncodedParams.set("symbol", `${returnedQuery[0].ticker}`);
+        }
+      }, [returnedQuery])
 
-  // useEffect(() => {
-  //   setOwnershipFetch(
-  //     {
-  //       method: 'POST',
-  //       headers: {
-  //         'content-type': 'application/x-www-form-urlencoded',
-  //             // Come back and remove key, it's not working in env folder not sure why
-  //         'X-RapidAPI-Key': '',
-  //         'X-RapidAPI-Host': 'yahoo-finance97.p.rapidapi.com'
-  //       },
-  //       body: ownershipEncodedParams
-  //     }
-  //   )
-  // }, [ownershipEncodedParams])
+  useEffect(() => {
+    setOwnershipFetch(
+      {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+              // Come back and remove key, it's not working in env folder not sure why
+          'X-RapidAPI-Key': '',
+          'X-RapidAPI-Host': 'yahoo-finance97.p.rapidapi.com'
+        },
+        body: ownershipEncodedParams
+      }
+    )
+  }, [ownershipEncodedParams])
     
-  //     useEffect(() => {
-  //       if (ownershipEncodedParams.get("symbol") && ownershipFetch !== null){
-  //       fetch('https://yahoo-finance97.p.rapidapi.com/institutional-holders', ownershipFetch)
-  //         .then(response => response.json())
-  //         .then(owners => setOwnership(owners))
-  //         .catch(err => console.error(err));
-  //         }
-  //       }, [ownershipFetch, ownershipEncodedParams]); 
+      useEffect(() => {
+        if (ownershipEncodedParams.get("symbol") && ownershipFetch !== null){
+        fetch('https://yahoo-finance97.p.rapidapi.com/institutional-holders', ownershipFetch)
+          .then(response => response.json())
+          .then(owners => setOwnership(owners))
+          .catch(err => console.error(err));
+          }
+        }, [ownershipFetch, ownershipEncodedParams]); 
 
 console.log("state", ownership)
 console.log("fetch", ownershipFetch)

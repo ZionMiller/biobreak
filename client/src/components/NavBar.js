@@ -6,20 +6,22 @@ import { TickerTape, Ticker } from "react-tradingview-embed";
 const NavBar = ({currentUser, handleDarkModeClick}) => {
 
   return (
-    <div id="navBar">
+    <div style={{margin: "0px"}}>
         { currentUser ?
         <Menu className='menu' >
             <Menu.Item>
                 <img className="logo-img" style={{ fontSize: "100px", padding: "0px" }} id="logo" src={require("../biobreak_logo.png")} alt="logo"/>
             </Menu.Item>
-            <Menu.Item>
-                <Ticker widgetPropsAny={{  "symbols": [
+            {/* <Menu.Item> */}
+                {/* <Ticker widgetPropsAny={{  "symbols": [
                                             {
-                                            "description": "DOW",
-                                            "proName": "NYSE:DOW"
+                                            // "description": "DOW",
+                                            // "proName": "NYSE:DOW"
+                                            "description": "XBI",
+                                            "proName": "AMEX:XBI"
                                             }                                   
-                                        ], "colorTheme": "light", "isTransparent": true, "autosize": true}} />
-                <Ticker widgetPropsAny={{  "symbols": [
+                                        ], "colorTheme": "light", "isTransparent": true, "autosize": true}} /> */}
+                {/* <Ticker widgetPropsAny={{  "symbols": [
                                             {
                                             "description": "NASDAQ",
                                             "proName": "NASDAQ:NDAQ"
@@ -30,9 +32,9 @@ const NavBar = ({currentUser, handleDarkModeClick}) => {
                                             "description": "",
                                             "proName": "AMEX:SPY"
                                             }                                 
-                                        ], "colorTheme": "light", "isTransparent": true, "autosize": true}} />                 
-            </Menu.Item>
-            <Menu.Item >
+                                        ], "colorTheme": "light", "isTransparent": true, "autosize": true}} />                  */}
+            {/* </Menu.Item> */}
+            <Menu.Item position='right'>
                 <Link to='/snapshot'>Snapshot</Link>
             </Menu.Item>
             <Menu.Item>

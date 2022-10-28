@@ -13,6 +13,7 @@ const News = ({returnedQuery}) => {
   const [newsArticles, setNews] = useState(null)
   const [newsFetchState, setNewsFetchState] = useState(null)
   const [newsEncodedParams, setNewsEncodedParams] = useState(new URLSearchParams())
+  // console.log({process.env.RAPID_KEY})
 
     useEffect(() => {
         if (returnedQuery.length != 0){
@@ -26,9 +27,9 @@ const News = ({returnedQuery}) => {
         method: 'POST',
         headers: {
           'content-type': 'application/x-www-form-urlencoded',
-              // Come back and remove key, it's not working in env folder not sure why
+
               // process.env.REACT_APP_Rapid_API_Key
-          'X-RapidAPI-Key': '',
+          'X-RapidAPI-Key': process.env.API_RAPID_KEY,
           'X-RapidAPI-Host': 'yahoo-finance97.p.rapidapi.com'
         },
         body: newsEncodedParams
