@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This version of BioBreak is deprecated, an updateed repo can be found undeer BioBreak2 on my repositories
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+BioBreak helps biotech investors save time with novel data visualizations containing KPIs buried deep in SEC filings, clinical trials, and more. What used to take countless tabs and hours of careful reading can now be done at the click of a button.

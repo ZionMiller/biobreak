@@ -9,5 +9,11 @@
         "clean": "rm -rf public",
         "deploy": "cp -a client/build/. public/",
         "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+    },
+    "dependencies": {
+        "@fullcalendar/core": "^5.11.3",
+        "@fullcalendar/daygrid": "^5.11.3",
+        "@fullcalendar/list": "^5.11.3",
+        "@fullcalendar/timegrid": "^5.11.3"
     }
 }
