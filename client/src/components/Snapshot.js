@@ -7,15 +7,18 @@ const Snapshot = ({ onCashExClick, query, setQuery, addWatchlist, search, return
   const handleCashAndSearch = () => {
     search()
     onCashExClick()
+    setQuery('')
   }
+
+
 
   return (
     <div>
       <Menu pointing>
         <Menu.Menu style={{padding: "5px"}}>
-          <Form position='left'>
+          <Form position='left' >
           <input type='text'
-              placeholder={query ? `${query}` : "Search..."}
+              placeholder="Search..."
               style={{width: "115px"}}
               value={query}
               onChange={((e) => setQuery(e.target.value))}
@@ -83,7 +86,7 @@ const Snapshot = ({ onCashExClick, query, setQuery, addWatchlist, search, return
 
     
         <Button style={{backgroundColor: "#FFB52E"}} onClick={addWatchlist}>
-            {query ? `Add to ${query.toUpperCase()} Watchlist` : "Add to Watchlist"}
+            {returnedQuery.length > 0 ? `Add to ${returnedQuery[0].ticker} Watchlist` : "Add to Watchlist"}
         </Button>
 
     </Menu>
