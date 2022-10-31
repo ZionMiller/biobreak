@@ -6,14 +6,19 @@ class StocksController < ApplicationController
   
   def search
     term = params[:symbol]
-    @results = BioStock.where("ticker LIKE ?", "%#{term.upcase}%")
-    render json: @results, status: :ok    
+    results = get_ticker(term)
+    render json: results, status: :ok
   end
 
-  def get_cash_and_expenses
-    puts @results
-    url = "https://cloud.iexapis.com/stable/time-series/REPORTED_FINANCIALS/#{@results[0].ticker}/10-Q?last=2&token=API_KEY_SECRET"
-    debugger
+  def get_ticker(symbol)
+    BioStock.where("ticker LIKE ?", "%#{symbol.upcase}%")
+  end
+
+  def cash_and_expenses
+    ticker = get_ticker(params[:symbol])[0].ticker
+    puts ticker
+    # debugger
+    url = "https://cloud.iexapis.com/stable/time-series/REPORTED_FINANCIALS/#{ticker}/10-Q?last=2&token=API_KEY_SECRET"
       response = RestClient.get(url)
       r = JSON.parse(response)
       render json: r(only: [
@@ -23,9 +28,9 @@ class StocksController < ApplicationController
   end
 
   def create
-    stock = Stock.create!(my_notese)
+    stock = Stock.create!(my_notes)
     render json: stock, status: :created
-    pp stocks_params
+    # pp stocks_params
   end
 
   def update

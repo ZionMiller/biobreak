@@ -58,7 +58,7 @@ function App() {
   }
 
   function onCashExClick() {
-    fetch("/stocks")
+    fetch(`/stocks/${query}`)
     .then((r) => r.json())
     .then((stonks) => setCashAndExpenses(stonks));
   }
@@ -99,7 +99,8 @@ function App() {
 
   return (
     <>
-      <div>
+      <body>
+        <div class="content">
         <NavBar 
           currentUser={currentUser} 
           updateUser={updateUser} 
@@ -157,6 +158,7 @@ function App() {
                 }/>    
                 <Route path='/snapshot/expenses' element={
                   <Expenses 
+                    onCashExClick={onCashExClick}
                     returnedQuery={returnedQuery}
                     query={query}
                     setQuery={setQuery}
@@ -187,8 +189,8 @@ function App() {
               <Signup updateUser={updateUser}/>
             }/>         
             </Routes>
-            
-        </div>
+            </div>
+        </body>
         <LoggedInFooter />
       </>
   );

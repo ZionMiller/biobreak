@@ -4,14 +4,14 @@ import { Table, Icon, Menu } from 'semantic-ui-react'
 
 const LoggedInFooter = () => {
   return (
-    <div style=
-        {{
-          bottom: "0",
-          left: "0",
-          position: "relative", //changed to relative from fixed also works if position is not there
-          marginTop: "25px",
-          width: "100%",
-        }}>
+    <div class="footer">
+ 
+    {/* //       bottom: "0",
+    //       left: "0",
+    //       flexDirection: "row",
+    //       marginTop: "25px",
+    //       width: "100%", */}
+   
             
         <Table  style={{backgroundColor: "#f0ead6", textAlign: "center"}}>
         <Table.Body>
