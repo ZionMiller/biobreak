@@ -22,7 +22,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const updateUser = (user) => setCurrentUser(user)
   const [isDarkMode, setIsDarkMode] = useState(false);
-  // const [searchQuery, setSearchQuery] = useState("")
   const [errors, setErrors] = useState([]);
   const [watchlists, setWatchlist] = useState([])
 
@@ -35,6 +34,7 @@ function App() {
   const params = useParams()
 
   console.log("query", query)
+  console.log("error", errors)
 
   useEffect(() => {
     fetch("/me")
@@ -51,10 +51,21 @@ function App() {
     }
   }, [])
 
+  const handleChange = (e) => {
+    setQuery(e.target.value)
+  }
+
+
   function search() {
     fetch(`/search/${query}`)
-    .then((r) => r.json())
-    .then((returnedQuery) => setReturnedQuery(returnedQuery));
+    .then((r) => {
+      if(r.ok){
+        r.json().then((returnedQuery) => setReturnedQuery(returnedQuery));
+      } else {
+        r.json().then(json => setErrors(json.errors))
+      }
+    })
+    
   }
 
   function onCashExClick() {
@@ -98,9 +109,8 @@ function App() {
    }    
 
   return (
-    <>
-      <body>
-        <div class="content">
+    <div class="content" style={{minHeight: "100%"}}>
+        <div class="content-inside" style={{ padding: "5px", paddingBottom: "10px"}}>
         <NavBar 
           currentUser={currentUser} 
           updateUser={updateUser} 
@@ -111,13 +121,14 @@ function App() {
               <About />
             }/>
             <Route path='snapshot' element={
-              <Snapshot
-              onCashExClick={onCashExClick}
+              <Snapshot handleChange={handleChange}
+                onCashExClick={onCashExClick}
                 currentUser={currentUser}
                 returnedQuery={returnedQuery}
                 search={search}
                 query={query}
                 setQuery={setQuery}
+                errors={errors}
                 addWatchlist={addWatchlist}
                 watchlist={watchlists}
                 />
@@ -190,9 +201,8 @@ function App() {
             }/>         
             </Routes>
             </div>
-        </body>
-        <LoggedInFooter />
-      </>
+        <LoggedInFooter class="footer" />
+      </div>
   );
 }
 

@@ -5,14 +5,6 @@ import { Table, Icon, Menu } from 'semantic-ui-react'
 const LoggedInFooter = () => {
   return (
     <div class="footer">
- 
-    {/* //       bottom: "0",
-    //       left: "0",
-    //       flexDirection: "row",
-    //       marginTop: "25px",
-    //       width: "100%", */}
-   
-            
         <Table  style={{backgroundColor: "#f0ead6", textAlign: "center"}}>
         <Table.Body>
           <Table.Row>
