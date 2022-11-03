@@ -7,7 +7,11 @@ class StocksController < ApplicationController
   def search
     term = params[:symbol]
     results = get_ticker(term)
-    render json: results, status: :ok
+    if results
+      render json: results, status: :ok
+    else
+      render json: { error: "Ticker doesn't exist in our database" }
+    end
   end
 
   def get_ticker(symbol)
@@ -25,6 +29,10 @@ class StocksController < ApplicationController
           :DocumentFiscalPeriodFocus, :DocumentFiscalYearFocus, :CashCashEquivalentsAndMarketableSecurities, :Assets,
           :ResearchAndDevelopmentExpense, :GeneralAndAdministrativeExpense, :NetIncomeLoss, :OperatingExpenses, :CommonStockSharesOutstanding
           ])
+  end
+
+  def news
+    url = 'https://yahoo-finance97.p.rapidapi.com/news'
   end
 
   def create

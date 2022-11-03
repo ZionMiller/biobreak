@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Menu, Label, Button, Form } from 'semantic-ui-react'
 import { Link, Outlet } from 'react-router-dom'
 
-const Snapshot = ({ onCashExClick, query, setQuery, addWatchlist, search, returnedQuery, watchlist, currentUser}) => {
+const Snapshot = ({ onCashExClick, query, setQuery, addWatchlist, search, returnedQuery, errors, handleChange}) => {
   
   const handleCashAndSearch = () => {
     search()
@@ -10,6 +10,7 @@ const Snapshot = ({ onCashExClick, query, setQuery, addWatchlist, search, return
     setQuery('')
   }
 
+  console.log("error for search", errors)
 
 
   return (
@@ -17,11 +18,11 @@ const Snapshot = ({ onCashExClick, query, setQuery, addWatchlist, search, return
       <Menu pointing>
         <Menu.Menu style={{padding: "5px"}}>
           <Form position='left' >
-          <input type='text'
+          <input type='search'
               placeholder="Search..."
               style={{width: "115px"}}
               value={query}
-              onChange={((e) => setQuery(e.target.value))}
+              onChange={handleChange}
               />
               <Button style={{backgroundColor: "#FFB52E"}} type='submit' onClick={handleCashAndSearch}>Search</Button>
           </Form>
@@ -46,7 +47,7 @@ const Snapshot = ({ onCashExClick, query, setQuery, addWatchlist, search, return
             currently viewing {returnedQuery[0].ticker} 
           </Label>
         }          
-
+        <h3></h3>
         <Menu.Item position='right' name='Chart'>
           <Link to='/snapshot/chart'>Chart</Link>
         </Menu.Item>
